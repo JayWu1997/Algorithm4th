@@ -1,4 +1,4 @@
-package cn.yongjie.ch1.section3.stack;
+package cn.yongjie.ch1.section3.stack.unfixedcapacitystack;
 
 public interface UnfixedCapacityStack<T> extends Iterable<T>{
 

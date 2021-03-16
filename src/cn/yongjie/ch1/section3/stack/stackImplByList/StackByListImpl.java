@@ -17,10 +17,6 @@ public class StackByListImpl<T> implements StackByList<T>{
 
     @Override
     public T pop() {
-        if(isEmpty()) {
-            System.out.println("Stack is empty now!");
-            return null;
-        }
         T result = head.item;
         head = head.next;
         itemNum--;

@@ -28,19 +28,12 @@ public class UnfixedCapacityStackWithArrayImpl<T> implements UnfixedCapacityStac
 
     @Override
     public T pop() {
-
-        if(index == 0) {// 检查栈是否为空{
-            System.out.println("当前栈为空！");
-            return null;
-        }
-        else{
-            //检查是否需要缩小数组
-            T item = array[--index];
-            array[index] = null; //避免对象游离
-            if(index>0 && index < cap/4)
-                resize(cap/2);
-            return item;
-        }
+        //检查是否需要缩小数组
+        T item = array[--index];
+        array[index] = null; //避免对象游离
+        if(index>0 && index < cap/4)
+            resize(cap/2);
+        return item;
     }
 
     @Override

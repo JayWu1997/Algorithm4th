@@ -22,17 +22,10 @@ public class QueueByListImpl<T> implements QueueByList<T>{
 
     @Override
     public T dequeue() {
-        if(size() == 0){
-            System.out.println("队列为空");
-            return null;
-        }
-        else{
-            T t = out.item;
-            out = out.next;
-            nodeNum--;
-            return t;
-        }
-
+        T t = out.item;
+        out = out.next;
+        nodeNum--;
+        return t;
     }
 
     @Override

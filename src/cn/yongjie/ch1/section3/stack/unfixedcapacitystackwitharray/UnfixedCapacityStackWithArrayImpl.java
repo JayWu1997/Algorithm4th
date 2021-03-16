@@ -1,17 +1,18 @@
-package cn.yongjie.ch1.section3.stack.unfixedcapacitystack;
+package cn.yongjie.ch1.section3.stack.unfixedcapacitystackwitharray;
 
 import java.util.Iterator;
 
 /*
     不定容栈，元素始终在栈大小的四分之一到二分之一
+    使用数组实现
  */
-public class UnfixedCapacityStackImpl<T> implements UnfixedCapacityStack<T>{
+public class UnfixedCapacityStackWithArrayImpl<T> implements UnfixedCapacityStackWithArray<T> {
 
     private int cap;  //容量
     private T[] array; //元素数组
     private int index = 0; //当前栈顶索引
 
-    UnfixedCapacityStackImpl(int cap){
+    UnfixedCapacityStackWithArrayImpl(int cap){
         if(cap < 4) cap=4;
         this.cap = cap;
         array = (T[]) new Object[cap];
@@ -82,11 +83,13 @@ public class UnfixedCapacityStackImpl<T> implements UnfixedCapacityStack<T>{
     }
 
     public static void main(String[] args) {
-        UnfixedCapacityStack<String> stack = new UnfixedCapacityStackImpl<>(1);
+        UnfixedCapacityStackWithArray<String> stack = new UnfixedCapacityStackWithArrayImpl<>(1);
         for (int i=0; i<100; i++){
             stack.push(i+"");
             System.out.println(i+"-"+stack.getCapacity());
         }
+
+        for(String s : stack)
 
         for(int i=100; i>0; i--){
             System.out.println(stack.pop()+"-"+stack.getCapacity());

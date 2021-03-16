@@ -1,4 +1,4 @@
-package cn.yongjie.ch1.section3.stack.queue;
+package cn.yongjie.ch1.section3.queue;
 
 import java.util.Iterator;
 

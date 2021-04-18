@@ -4,23 +4,27 @@ import java.util.Iterator;
 
 public class StackByListImpl<T> implements StackByList<T>{
     private int itemNum;
-    private Node head;
+    private Node top;
 
     @Override
     public void push(T t) {
         Node newNode = new Node();
         newNode.item = t;
-        newNode.next = head;
-        head = newNode;
+        newNode.next = top;
+        top = newNode;
         itemNum++;
     }
 
     @Override
     public T pop() {
-        T result = head.item;
-        head = head.next;
+        T result = top.item;
+        top = top.next;
         itemNum--;
         return result;
+    }
+
+    public T peek(){
+        return top.item;
     }
 
     @Override
@@ -30,22 +34,22 @@ public class StackByListImpl<T> implements StackByList<T>{
 
     @Override
     public boolean isEmpty() {
-        return head==null;
+        return top ==null;
     }
 
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            Node headTemp = head;
+            Node topTemp = top;
             @Override
             public boolean hasNext() {
-                return headTemp!=null;
+                return topTemp !=null;
             }
 
             @Override
             public T next() {
-                Node node = headTemp;
-                headTemp = headTemp.next;
+                Node node = topTemp;
+                topTemp = topTemp.next;
                 return node.item;
             }
         };

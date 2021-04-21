@@ -14,7 +14,7 @@ public class A1_Selection implements SortTemplate {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         A1_Selection selection = new A1_Selection();
         selection.executeSort();
     }

@@ -1,6 +1,10 @@
 package cn.yongjie.ch2.base;
 
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
 public interface SortTemplate {
     void sort(Comparable[] a);
 
@@ -38,22 +42,29 @@ public interface SortTemplate {
         return true;
     }
 
-    default void executeSort(){
-        Integer[] a = new Integer[10];
-        a[0] = 5;
-        a[1] = 2;
-        a[2] = 7;
-        a[3] = 8;
-        a[4] = 0;
-        a[5] = 1;
-        a[6] = 3;
-        a[7] = 9;
-        a[8] = 4;
-        a[9] = 2;
+    default Comparable[] getParams() throws Exception{
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream("numbers.txt")));
+        String line;
+        if((line = in.readLine()) != null) {
+            String[] numbers = line.split(" ");
+            Integer[] a = new Integer[numbers.length];
+            for (int i = 0; i < numbers.length; i++) {
+                a[i] = Integer.valueOf(numbers[i]);
+            }
+            return a;
+        }
+        return null;
+    }
+
+    default void executeSort() throws Exception{
+        Comparable[] a = getParams();
         System.out.println("Before sort:");
         show(a);
         System.out.println("After sort:");
+        long beginTime = System.currentTimeMillis();
         sort(a);
+        long endTime = System.currentTimeMillis();
         show(a);
+        System.out.println("耗时：" + (endTime-beginTime)+"ms");
     }
 }

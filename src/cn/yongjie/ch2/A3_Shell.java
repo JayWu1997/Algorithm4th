@@ -3,7 +3,7 @@ package cn.yongjie.ch2;
 import cn.yongjie.ch2.base.SortTemplate;
 
 public class A3_Shell implements SortTemplate {
-    @Override
+
     public void sort(Comparable[] a) {
         int N = a.length;
         int h = 1;

@@ -3,7 +3,7 @@ package cn.yongjie.ch2;
 import cn.yongjie.ch2.base.SortTemplate;
 
 public class A1_Selection implements SortTemplate {
-    @Override
+
     public void sort(Comparable[] a) {
         for(int i = 0; i < a.length-1; i++){
             int min = i;

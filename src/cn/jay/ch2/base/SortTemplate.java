@@ -1,4 +1,4 @@
-package cn.yongjie.ch2.base;
+package cn.jay.ch2.base;
 
 
 import java.io.BufferedReader;
@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
 public interface SortTemplate {
+
     void sort(Comparable[] a);
 
     default boolean less(Comparable v, Comparable w){

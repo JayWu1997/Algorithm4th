@@ -1,4 +1,4 @@
-package cn.yongjie.ch2.tools;
+package cn.jay.ch2.tools;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -7,7 +7,7 @@ import java.util.Random;
 // 该类用于生成随机数至文件 numbers.txt
 public class NumberInitTool {
     // 这里修改生成个数
-    private static int NUMBER_OF_PARAMS = 1000000;
+    private static int NUMBER_OF_PARAMS = 10000000;
 
     public static void initRandomNums() throws Exception{
         PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);

@@ -1,4 +1,4 @@
-package cn.yongjie.ch3;
+package cn.jay.ch3;
 
 /*
     符号表的基本接口

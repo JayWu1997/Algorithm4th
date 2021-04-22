@@ -1,6 +1,6 @@
-package cn.yongjie.ch2;
+package cn.jay.ch2;
 
-import cn.yongjie.ch2.base.SortTemplate;
+import cn.jay.ch2.base.SortTemplate;
 
 public class A3_Shell implements SortTemplate {
 

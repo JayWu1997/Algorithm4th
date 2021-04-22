@@ -1,7 +1,7 @@
 package homework;
 
-import cn.yongjie.ch1.section3.stack.stackImplByList.StackByList;
-import cn.yongjie.ch1.section3.stack.stackImplByList.StackByListImpl;
+import cn.jay.ch1.section3.stack.stackImplByList.StackByList;
+import cn.jay.ch1.section3.stack.stackImplByList.StackByListImpl;
 
 public class Prb1_3_4 {
     public static void main(String[] args) {

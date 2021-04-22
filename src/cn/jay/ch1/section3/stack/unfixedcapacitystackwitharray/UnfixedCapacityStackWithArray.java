@@ -1,4 +1,4 @@
-package cn.yongjie.ch1.section3.stack.unfixedcapacitystackwitharray;
+package cn.jay.ch1.section3.stack.unfixedcapacitystackwitharray;
 
 public interface UnfixedCapacityStackWithArray<T> extends Iterable<T>{
 

@@ -2,37 +2,49 @@ package cn.yongjie.ch2;
 
 import cn.yongjie.ch2.base.SortTemplate;
 
+
 public class A4_Merge implements SortTemplate {
+
+    public static Comparable[] aTemp;
 
     @Override
     public void sort(Comparable[] a) {
 
     }
 
-    public void sort(Comparable[] a, int lo, int hi){
+    // 自顶向下的归并排序
+    public void sortFromTopToBottom(Comparable[] a, int lo, int hi){
         if(lo >= hi) return;
         int leftEnd = lo + (hi-lo)/2;
-        sort(a, lo, leftEnd);
+        sortFromTopToBottom(a, lo, leftEnd);
         // 右半部分的函数参数lo要加1，思考一下为什么。
-        sort(a, leftEnd + 1, hi);
+        sortFromTopToBottom(a, leftEnd + 1, hi);
         merge(a, lo, leftEnd, hi);
     }
 
-    public void merge(Comparable[] a, final int lo, final int leftEndOfA, final int hi){
-        Comparable[] aTemp = new Comparable[hi-lo+1];
+    // 自底向上的归并排序
+    public void sortFromBottomToTop(Comparable[] a){
+        for(int subArraySize = 1; subArraySize < a.length; subArraySize *= 2){
+            for(int leftStart = 0; leftStart < a.length - subArraySize; leftStart += 2*subArraySize)
+                merge(a, leftStart, leftStart + subArraySize - 1, Math.min(leftStart+2*subArraySize-1, a.length-1));
+        }
+    }
+
+    public void merge(Comparable[] a, final int lo, final int leftEnd, final int hi){
+        // 如果左边最大值都小于等于右边最小值，那就不用归并
+        if(lessOrEqual(a[leftEnd], a[leftEnd+1]))
+            return;
         // 这两个坐标变量的对象为aTemp数组
-        int leftStart = 0;
-        // 为什么是+1？
-        int rightStart = leftEndOfA + 1 - lo;
+        int leftStart = lo, rightStart = leftEnd + 1;
         // 复制待归并元素
         for(int i = lo; i <= hi; i++)
-            aTemp[i-lo] = a[i];
+            aTemp[i] = a[i];
         // 开始归并元素
         for(int i = lo; i <= hi; i++){
             // 先判断左边是否排完，再判断右边是否排完，接着比较左边未排序的第一个数和右边未排序的第一个数大小并排序
-            if(leftStart + lo > leftEndOfA)
+            if(leftStart > leftEnd)
                 a[i] = aTemp[rightStart++];
-            else if(rightStart + lo > hi)
+            else if(rightStart > hi)
                 a[i] = aTemp[leftStart++];
             else if(less(aTemp[leftStart], aTemp[rightStart]))
                 a[i] = aTemp[leftStart++];
@@ -44,13 +56,27 @@ public class A4_Merge implements SortTemplate {
     @Override
     public void executeSort() throws Exception {
         Comparable[] a = getParams();
-        System.out.println("Before sort:");
-        show(a);
-        System.out.println("After sort:");
+        aTemp = new Comparable[a.length];
+
         long beginTime = System.currentTimeMillis();
-        sort(a, 0, a.length-1);
+        sortFromTopToBottom(a, 0, a.length-1);
         long endTime = System.currentTimeMillis();
-        show(a);
+        if(isSorted(a))
+            System.out.println("自顶向下的归并排序成功！");
+        else
+            System.out.println("自顶向下的归并排序失败!");
+        System.out.println("耗时：" + (endTime-beginTime)+"ms");
+        System.out.println();
+
+        a = getParams();
+        aTemp = new Comparable[a.length];
+        beginTime = System.currentTimeMillis();
+        sortFromBottomToTop(a);
+        endTime = System.currentTimeMillis();
+        if(isSorted(a))
+            System.out.println("自底向上的归并排序成功!");
+        else
+            System.out.println("自底向上的归并排序失败!");
         System.out.println("耗时：" + (endTime-beginTime)+"ms");
     }
 

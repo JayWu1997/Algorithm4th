@@ -58,13 +58,13 @@ public interface SortTemplate {
 
     default void executeSort() throws Exception{
         Comparable[] a = getParams();
-        System.out.println("Before sort:");
-        show(a);
-        System.out.println("After sort:");
         long beginTime = System.currentTimeMillis();
         sort(a);
         long endTime = System.currentTimeMillis();
-        show(a);
+        if(isSorted(a))
+            System.out.println("排序成功!");
+        else
+            System.out.println("排序失败!");
         System.out.println("耗时：" + (endTime-beginTime)+"ms");
     }
 }

@@ -7,14 +7,17 @@ import java.util.Random;
 // 该类用于生成随机数至文件 numbers.txt
 public class NumberInitTool {
     // 这里修改生成个数
-    private static int NUMBER_OF_PARAMS = 10000000;
+    private static int NUMBER_OF_PARAMS = 1000000;
+
+    // 取余参数
+    private static int REMAINDER = 1000000;
 
     public static void initRandomNums() throws Exception{
         PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for(int i = 0; i < NUMBER_OF_PARAMS; i++){
-            sb.append(""+random.nextInt()%NUMBER_OF_PARAMS+" ");
+            sb.append(""+random.nextInt()%REMAINDER+" ");
         }
         out.println(sb.toString());
         out.flush();
@@ -84,6 +87,7 @@ public class NumberInitTool {
         out.flush();
         out.close();
     }
+
 
 
     public static void main(String[] args) throws Exception{

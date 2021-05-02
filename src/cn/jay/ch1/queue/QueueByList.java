@@ -1,4 +1,4 @@
-package cn.jay.ch1.section3.queue;
+package cn.jay.ch1.queue;
 
 public interface QueueByList<T> extends Iterable<T>{
     void enqueue(T t);

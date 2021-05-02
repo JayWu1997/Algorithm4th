@@ -1,4 +1,4 @@
-package cn.jay.ch1.section3.bag;
+package cn.jay.ch1.bag;
 
 import java.util.Iterator;
 

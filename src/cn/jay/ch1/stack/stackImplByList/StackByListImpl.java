@@ -1,4 +1,4 @@
-package cn.jay.ch1.section3.stack.stackImplByList;
+package cn.jay.ch1.stack.stackImplByList;
 
 import java.util.Iterator;
 

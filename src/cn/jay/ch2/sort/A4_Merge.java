@@ -1,6 +1,6 @@
-package cn.jay.ch2;
+package cn.jay.ch2.sort;
 
-import cn.jay.ch2.base.SortTemplate;
+import cn.jay.ch2.sort.base.SortTemplate;
 
 /**
  * @ClassName:      A4_Merge

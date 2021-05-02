@@ -1,4 +1,4 @@
-package cn.jay.ch2.base;
+package cn.jay.ch2.sort.base;
 
 
 import java.io.BufferedReader;

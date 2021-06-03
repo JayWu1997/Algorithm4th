@@ -61,7 +61,7 @@ public class A4_Merge implements SortTemplate {
 
     @Override
     public void executeSort() throws Exception {
-        Comparable[] a = getParams();
+        Comparable[] a = getIntegerParamsFromFile();
         aTemp = new Comparable[a.length];
 
         long beginTime = System.currentTimeMillis();
@@ -74,7 +74,7 @@ public class A4_Merge implements SortTemplate {
         System.out.println("耗时：" + (endTime-beginTime)+"ms");
         System.out.println();
 
-        a = getParams();
+        a = getIntegerParamsFromFile();
         aTemp = new Comparable[a.length];
         beginTime = System.currentTimeMillis();
         sortFromBottomToTop(a);

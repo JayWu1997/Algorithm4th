@@ -43,7 +43,11 @@ public interface SortTemplate {
         return true;
     }
 
-    default Comparable[] getParams() throws Exception{
+    /**
+     * @Method      getParams()
+     * @Description 从 numbers.txt 文件获取Integer数组
+     */
+    default Comparable[] getIntegerParamsFromFile() throws Exception{
         BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream("numbers.txt")));
         String line;
         if((line = in.readLine()) != null) {
@@ -58,7 +62,7 @@ public interface SortTemplate {
     }
 
     default void executeSort() throws Exception{
-        Comparable[] a = getParams();
+        Comparable[] a = getIntegerParamsFromFile();
         long beginTime = System.currentTimeMillis();
         sort(a);
         long endTime = System.currentTimeMillis();

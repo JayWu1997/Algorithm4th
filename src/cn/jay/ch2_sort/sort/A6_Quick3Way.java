@@ -5,9 +5,8 @@ import cn.jay.ch2_sort.sort.base.SortTemplate;
 /**
  * @ClassName:      A6_Quick3Way
  * @Description:    三项切分的快速排序算法，该算法主要用于重复值较多的数组
- * @Author:         jay wu
+ * @Author:         jay
  * @Date:           2021/4/22 23:40
- * @Version:        1.0
  */
 public class A6_Quick3Way implements SortTemplate {
 

@@ -5,9 +5,8 @@ import cn.jay.ch2_sort.sort.base.SortTemplate;
 /**
  * @ClassName: A8_HeapSort
  * @Description: 堆排序,从小到大，见算法第四版 2.4.5
- * @Author: jay wu
+ * @Author: jay
  * @Date: 2021/4/24 20:34
- * @Version: 1.0
  */
 public class A8_HeapSort implements SortTemplate {
     @Override

@@ -2,9 +2,11 @@ package cn.jay.ch1_base.bag;
 
 import java.util.Iterator;
 
+
 public class BagByListImpl<T> implements BagByList<T>{
     private Node head;
     private int nodeNum;
+
 
     @Override
     public Iterator<T> iterator() {

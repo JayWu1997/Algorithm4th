@@ -8,9 +8,8 @@ import java.util.Arrays;
 /**
  * @ClassName: BinarySearchOrderedSymbolTable
  * @Description: 有序符号表和数组实现的二分查找表，优点是查找快，缺点是插入慢
- * @Author: jay wu
+ * @Author: jay
  * @Date: 2021/5/29 19:59
- * @Version: 1.0
  */
 public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> implements OrderedSymbolTable<K, V> {
     private int size;
@@ -53,166 +52,12 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     }
 
     /**
-    * @Description: 返回最小key
-    * @Param: []
-    * @return: K
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public K min() {
-        return keys[0];
-    }
-
-    /**
-    * @Description: 返回最大key
-    * @Param: []
-    * @return: K
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public K max() {
-        return keys[size-1];
-    }
-
-    /**
-    * @Description: 返回小于等于k的最大键，若不存在则返回null
-    * @Param: [k]
-    * @return: K
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public K floor(K k) {
-        int index = getKeyRank(k, 0, size-1);
-        if(index == -1){
-            index = getKeyRankWhetherExit(k, 0, size-1);
-            if(index == 0)
-                return null;
-            else if(index >= size)
-                return keys[size-1];
-            else
-                return keys[index-1];
-        }
-        else
-            return keys[index];
-    }
-
-    /**
-    * @Description: 返回大于等于k的最小键, 若不存在则返回null
-    * @Param: [k]
-    * @return: K
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-
-    @Override
-    public K ceiling(K k) {
-        int index = getKeyRankWhetherExit(k, 0, size-1);
-        if(index > size-1)
-            return null;
-        else
-            return keys[index];
-    }
-
-    /**
-    * @Description: 返回k在keys中的排名，k不一定要在keys中
-    * @Param: [k]
-    * @return: int
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public int rank(K k) {
-        return getKeyRankWhetherExit(k, 0, size-1);
-    }
-
-    /**
-    * @Description: 通过rank获取key
-    * @Param: [rank]
-    * @return: K
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-
-    @Override
-    public K getKeyByRank(int rank) {
-        return keys[rank];
-    }
-
-    /**
-    * @Description: 删除最小key及其value
-    * @Param: []
-    * @return: void
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public void deleteMin() {
-        for (int i = 0; i < size-2; i++) {
-            keys[i] = keys[i+1];
-            values[i] = values[i+1];
-        }
-        keys[size-1] = null;
-        values[size-1] = null;
-        size--;
-    }
-
-    /**
-    * @Description: 删除最大key及其value
-    * @Param: []
-    * @return: void
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public void deleteMax() {
-        keys[size-1] = null;
-        values[size-1] = null;
-        size--;
-    }
-
-    /**
-    * @Description: 删除指定key及其value
-    * @Param: [k]
-    * @return: void
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public void delete(K k) {
-        int index = getKeyRank(k, 0, size-1);
-        if(index != -1){
-            for(int i = index; i < size-2; i++){
-                keys[i] = keys[i + 1];
-                values[i] = values[i + 1];
-            }
-            keys[size-1] = null;
-            values[size-1] = null;
-            size--;
-        }
-    }
-
-    /**
-    * @Description: 获取键值在[lo,hi]区间的所有键
-    * @Param: [lo, hi]
-    * @return: java.lang.Iterable<K>
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
-    @Override
-    public Iterable<K> keys(K lo, K hi) {
-        return new ArrayList<>(Arrays.asList(keys).subList(getKeyRankWhetherExit(lo, 0, size - 1), getKeyRankWhetherExit(hi, 0, size - 1) + 1));
-    }
-
-    /**
-    * @Description: 将键值对放入符号表
-    * @Param: [k, v]
-    * @return: void
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
+     * @Description: 将键值对放入符号表
+     * @Param: [k, v]
+     * @return: void
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
     @Override
     public void put(K k, V v) {
 
@@ -242,12 +87,12 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     }
 
     /**
-    * @Description: 根据key获取指定value，key不存在则返回null
-    * @Param: [k]
-    * @return: V
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
+     * @Description: 根据key获取指定value，key不存在则返回null
+     * @Param: [k]
+     * @return: V
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
     @Override
     public V get(K k) {
         int index = getKeyRank(k, 0, size-1);
@@ -258,41 +103,209 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     }
 
     /**
-    * @Description: 判断符号表是否包含k
-    * @Param: [k]
-    * @return: boolean
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
+     * @Description: 删除指定key及其value
+     * @Param: [k]
+     * @return: void
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
+    @Override
+    public void delete(K k) {
+        int index = getKeyRank(k, 0, size-1);
+        if(index != -1){
+            for(int i = index; i < size-2; i++){
+                keys[i] = keys[i + 1];
+                values[i] = values[i + 1];
+            }
+            keys[size-1] = null;
+            values[size-1] = null;
+            size--;
+        }
+    }
+
+    /**
+     * @Description: 判断符号表是否包含k
+     * @Param: [k]
+     * @return: boolean
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
     @Override
     public boolean contains(K k) {
         return OrderedSymbolTable.super.contains(k);
     }
 
     /**
-    * @Description: 判断当前符号表是否为空
-    * @Param: []
-    * @return: boolean
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
+     * @Description: 判断当前符号表是否为空
+     * @Param: []
+     * @return: boolean
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
     @Override
     public boolean isEmpty() {
         return OrderedSymbolTable.super.isEmpty();
     }
 
     /**
-    * @Description: 返回当前符号表内的元素个数
-    * @Param: []
-    * @return: int
-    * @Author: Jay
-    * @Date: 2021/12/17
-    */
+     * @Description: 返回当前符号表内的元素个数
+     * @Param: []
+     * @return: int
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+    * @Description: 返回最小key
+    * @Param: []
+    * @return: K
+    * @Author: Jay
+    * @Date: 2021/12/17
+    */
+    @Override
+    public K min() {
+        return keys[0];
+    }
+
+    /**
+    * @Description: 返回最大key
+    * @Param: []
+    * @return: K
+    * @Author: Jay
+    * @Date: 2021/12/17
+    */
+    @Override
+    public K max() {
+        return keys[size-1];
+    }
+
+    /**
+     * @Description: 返回小于等于k的最大键，若不存在则返回null
+     * @Param: [k]
+     * @return: K
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
+    @Override
+    public K floor(K k) {
+        int index = getKeyRank(k, 0, size-1);
+        if(index == -1){
+            index = getKeyRankWhetherExit(k, 0, size-1);
+            if(index == 0)
+                return null;
+            else if(index >= size)
+                return keys[size-1];
+            else
+                return keys[index-1];
+        }
+        else
+            return keys[index];
+    }
+
+    /**
+     * @Description: 返回大于等于k的最小键, 若不存在则返回null
+     * @Param: [k]
+     * @return: K
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
+
+    @Override
+    public K ceiling(K k) {
+        int index = getKeyRankWhetherExit(k, 0, size-1);
+        if(index > size-1)
+            return null;
+        else
+            return keys[index];
+    }
+
+    /**
+     * @Description: 返回k在keys中的排名，k不一定要在keys中
+     * @Param: [k]
+     * @return: int
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
+    @Override
+    public int rank(K k) {
+        return getKeyRankWhetherExit(k, 0, size-1);
+    }
+
+    /**
+    * @Description: 通过rank获取key
+    * @Param: [rank]
+    * @return: K
+    * @Author: Jay
+    * @Date: 2021/12/17
+    */
+    @Override
+    public K select(int rank) {
+        return keys[rank];
+    }
+
+    /**
+    * @Description: 删除最小key及其value
+    * @Param: []
+    * @return: void
+    * @Author: Jay
+    * @Date: 2021/12/17
+    */
+    @Override
+    public void deleteMin() {
+        if (size == 0) return;
+        for (int i = 0; i < size-1; i++) {
+            keys[i] = keys[i+1];
+            values[i] = values[i+1];
+        }
+        keys[size-1] = null;
+        values[size-1] = null;
+        size--;
+    }
+
+    /**
+    * @Description: 删除最大key及其value
+    * @Param: []
+    * @return: void
+    * @Author: Jay
+    * @Date: 2021/12/17
+    */
+    @Override
+    public void deleteMax() {
+        if (size == 0) return;
+        keys[size-1] = null;
+        values[size-1] = null;
+        size--;
+    }
+
+    @Override
+    public int size(K lo, K hi) {
+        int loIndex = rank(lo);
+        int hiIndex = rank(hi);
+        int result = hiIndex - loIndex;
+        if (contains(hi)) result++;
+        return result;
+    }
+
+    /**
+     * @Description: 获取键值在[lo,hi]区间的所有键
+     * @Param: [lo, hi]
+     * @return: java.lang.Iterable<K>
+     * @Author: Jay
+     * @Date: 2021/12/17
+     */
+    @Override
+    public Iterable<K> keys(K lo, K hi) {
+        ArrayList<K> result = new ArrayList<>(Arrays.asList(keys).subList(getKeyRankWhetherExit(lo, 0, size - 1), getKeyRankWhetherExit(hi, 0, size - 1) + 1));
+        if(!contains(hi)) result.remove(result.size()-1);
+        return result;
+    }
+
+
+    // 2 4 6 8 10
     /**
     * @Description: 返回所有keys
     * @Param: []
@@ -302,7 +315,10 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     */
     @Override
     public Iterable<K> keys() {
-        return new ArrayList<>(Arrays.asList(keys));
+        ArrayList<K> result = new ArrayList<>();
+        for(int i = 0; i < size; i++)
+            result.add(keys[i]);
+        return result;
     }
 
 
@@ -360,10 +376,84 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
 
     public static void main(String[] args) {
         BinarySearchOrderedArraySymbolTable<Integer, Integer> symbolTable = new BinarySearchOrderedArraySymbolTable<>();
+
+        // 测试put()
+        System.out.println("测试put()");
         for (int i = 0; i < 10; i++) {
-            symbolTable.put(i*3, i*3 + 100);
+            symbolTable.put(i, i + 100);
+            System.out.println("插入<"+ i + "," + (i+100) + ">");
         }
-        System.out.println(symbolTable.floor(-1));
+        System.out.println();
+
+        // 测试get()
+        System.out.println("测试get()");
+        for(int i = 0; i < 15; i++){
+            System.out.println("get(" + i + ") : " + symbolTable.get(i));
+        }
+        System.out.println();
+
+        // 测试rank
+        System.out.println("测试rank()");
+        for (int i = 0; i < 15; i++) {
+            System.out.println("rank(" + i + ") : " + symbolTable.rank(i));
+        }
+        System.out.println();
+
+        // 测试floor()
+        System.out.println("测试floor()");
+        for (int i = -5; i < 10; i++) {
+            System.out.println("floor(" + i + ") : " + symbolTable.floor(i));
+        }
+        System.out.println();
+
+        System.out.println("测试ceiling()");
+        for (int i = 0; i < 15; i++) {
+            System.out.println("ceiling(" + i + ") : " + symbolTable.ceiling(i));
+        }
+        System.out.println();
+
+        System.out.println("测试contains()");
+        for (int i = 0; i < 15; i++) {
+            System.out.println("contains(" + i + ") : " + symbolTable.contains(i));
+        }
+        System.out.println();
+
+        System.out.println("测试getKeyRankWhetherExit()");
+        for (int i = -2; i < 13; i++) {
+            System.out.println("getKeyRankWhetherExit(" + i + ") : " + symbolTable.getKeyRankWhetherExit(i, 0, symbolTable.size-1));
+        }
+        System.out.println();
+
+        System.out.println("测试getKeyRank()");
+        for (int i = -2; i < 13; i++) {
+            System.out.println("getKeyRank(" + i + ") : " + symbolTable.getKeyRank(i, 0, symbolTable.size-1));
+        }
+        System.out.println();
+
+        System.out.println("测试rank()");
+        for (int i = -2; i < 13; i++) {
+            System.out.println("rank(" + i + ") : " + symbolTable.rank(i));
+        }
+        System.out.println();
+
+        System.out.println("测试deleteMin()，执行一次deleteMin()后");
+        symbolTable.deleteMin();
+        Iterable<Integer> keys = symbolTable.keys();
+        for(Integer i : keys)
+            System.out.println(i);
+        System.out.println();
+
+        System.out.println("测试deleteMax()，执行一次deleteMax()后");
+        symbolTable.deleteMax();
+        keys = symbolTable.keys();
+        for(Integer i : keys)
+            System.out.println(i);
+        System.out.println();
+
+        System.out.println("");
+
+
+
 
     }
 }

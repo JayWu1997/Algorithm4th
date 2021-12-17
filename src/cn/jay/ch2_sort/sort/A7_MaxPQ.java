@@ -7,9 +7,8 @@ import java.io.InputStreamReader;
 /**
  * @ClassName: MaxPQ
  * @Description: 最大优先队列的实现
- * @Author: jay wu
+ * @Author: jay
  * @Date: 2021/4/24 0:56
- * @Version: 1.0
  */
 public class A7_MaxPQ<Key extends Comparable<Key>>{
 

@@ -5,9 +5,8 @@ import cn.jay.ch2_sort.sort.base.SortTemplate;
 /**
  * @ClassName:      A4_Merge
  * @Description:    归并排序
- * @Author:         jay wu
+ * @Author:         jay
  * @Date:           2021/4/22 21:48
- * @Version:        1.0
  */
 public class A4_Merge implements SortTemplate {
 

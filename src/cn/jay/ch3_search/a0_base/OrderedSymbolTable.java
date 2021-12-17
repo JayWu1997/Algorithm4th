@@ -4,9 +4,8 @@ package cn.jay.ch3_search.a0_base;
 /**
  * @ClassName: OrderedSymbolTable
  * @Description: 有序符号表
- * @Author: jay wu
+ * @Author: jay
  * @Date: 2021/5/29 19:18
- * @Version: 1.0
  */
 public interface OrderedSymbolTable<K extends Comparable<K>,V> extends UnorderedSymbolTable<K, V> {
     K min();
@@ -19,11 +18,15 @@ public interface OrderedSymbolTable<K extends Comparable<K>,V> extends Unordered
 
     int rank(K k);
 
-    K getKeyByRank(int rank);
+    K select(int rank);
 
     void deleteMin();
 
     void deleteMax();
 
+    int size(K lo, K hi);
+
     Iterable<K> keys(K lo, K hi);
+
+    Iterable<K> keys();
 }

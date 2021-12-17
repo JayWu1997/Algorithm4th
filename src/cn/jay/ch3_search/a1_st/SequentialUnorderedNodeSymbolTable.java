@@ -7,9 +7,8 @@ import java.util.ArrayList;
 /**
  * @ClassName: SequentialST
  * @Description: 由链表实现的顺序符号表
- * @Author: jay wu
+ * @Author: jay
  * @Date: 2021/5/20 17:20
- * @Version: 1.0
  */
 
 // 关于 泛型继承 的相关问题 https://stackoverflow.com/questions/65913465/unexpected-bound-error-on-generics-with-two-generics

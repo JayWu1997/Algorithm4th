@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @ClassName: BinarySearchOrderedSymbleTable
+ * @ClassName: BinarySearchOrderedSymbolTable
  * @Description: 有序符号表和数组实现的二分查找表，优点是查找快，缺点是插入慢
  * @Author: jay wu
  * @Date: 2021/5/29 19:59
@@ -106,6 +106,7 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     * @Author: Jay
     * @Date: 2021/12/17
     */
+
     @Override
     public K ceiling(K k) {
         int index = getKeyRankWhetherExit(k, 0, size-1);
@@ -134,6 +135,7 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     * @Author: Jay
     * @Date: 2021/12/17
     */
+
     @Override
     public K getKeyByRank(int rank) {
         return keys[rank];
@@ -201,10 +203,7 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     */
     @Override
     public Iterable<K> keys(K lo, K hi) {
-        ArrayList<K> result = new ArrayList<>();
-        for(int i = getKeyRankWhetherExit(lo, 0, size-1); i < getKeyRankWhetherExit(hi, 0, size-1)+1; i++)
-            result.add(keys[i]);
-        return result;
+        return new ArrayList<>(Arrays.asList(keys).subList(getKeyRankWhetherExit(lo, 0, size - 1), getKeyRankWhetherExit(hi, 0, size - 1) + 1));
     }
 
     /**
@@ -224,7 +223,6 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
         }
 
         // 开始插入
-
         if(size == 0) {
             keys[0] = k;
             values[0] = v;
@@ -304,9 +302,7 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     */
     @Override
     public Iterable<K> keys() {
-        ArrayList<K> result = new ArrayList<>();
-        result.addAll(Arrays.asList(keys));
-        return result;
+        return new ArrayList<>(Arrays.asList(keys));
     }
 
 
@@ -363,11 +359,11 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     }
 
     public static void main(String[] args) {
-        BinarySearchOrderedArraySymbolTable<Integer, Integer> bsoas = new BinarySearchOrderedArraySymbolTable();
+        BinarySearchOrderedArraySymbolTable<Integer, Integer> symbolTable = new BinarySearchOrderedArraySymbolTable<>();
         for (int i = 0; i < 10; i++) {
-            bsoas.put(i*3, i*3 + 100);
+            symbolTable.put(i*3, i*3 + 100);
         }
-        System.out.println(bsoas.floor(-1));
+        System.out.println(symbolTable.floor(-1));
 
     }
 }

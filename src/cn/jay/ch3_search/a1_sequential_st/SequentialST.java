@@ -1,6 +1,6 @@
-package cn.jay.ch3_search.a1_st;
+package cn.jay.ch3_search.a1_sequential_st;
 
-import cn.jay.ch3_search.a0_base.UnorderedSymbolTable;
+import cn.jay.ch3_search.a0_base.SymbolTable;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 // 关于 泛型继承 的相关问题 https://stackoverflow.com/questions/65913465/unexpected-bound-error-on-generics-with-two-generics
-public class SequentialUnorderedNodeSymbolTable<K extends Comparable<K>, V> implements UnorderedSymbolTable<K, V> {
+public class SequentialST<K extends Comparable<K>, V> implements SymbolTable<K, V> {
 
     private Node first;
     private int size = 0;
@@ -31,7 +31,7 @@ public class SequentialUnorderedNodeSymbolTable<K extends Comparable<K>, V> impl
     }
 
     public static void main(String[] args) {
-        SequentialUnorderedNodeSymbolTable<String, Integer> st = new SequentialUnorderedNodeSymbolTable<String, Integer>();
+        SequentialST<String, Integer> st = new SequentialST<String, Integer>();
 
         System.out.println("**** 测试put（） ****");
         for (int i = 0; i < 100; i++) {

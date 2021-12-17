@@ -1,4 +1,4 @@
-package cn.jay.ch3_search.a2_bsoast;
+package cn.jay.ch3_search.a2_binary_search_st;
 
 import cn.jay.ch3_search.a0_base.OrderedSymbolTable;
 
@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @ClassName: BinarySearchOrderedSymbolTable
+ * @ClassName: BinarySearchST
  * @Description: 有序符号表和数组实现的二分查找表，优点是查找快，缺点是插入慢
  * @Author: jay
  * @Date: 2021/5/29 19:59
  */
-public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> implements OrderedSymbolTable<K, V> {
+public class BinarySearchST<K extends Comparable<K>, V> implements OrderedSymbolTable<K, V> {
     private int size;
 
     private K[] keys;
@@ -20,14 +20,14 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
 
     private int capacity = 8;
 
-    BinarySearchOrderedArraySymbolTable(){}
+    BinarySearchST(){}
 
     /**
      * @Method BinarySearchOrderedSymbolTable
      * @Description 初始化二叉搜索符号表
      * @param capacity 初始容量
      */
-    BinarySearchOrderedArraySymbolTable(int capacity){
+    BinarySearchST(int capacity){
         if (capacity > 8) {
             this.capacity = capacity;
         }
@@ -65,6 +65,13 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
         if(size == 0){
             keys = (K[]) new Comparable[this.capacity];
             values = (V[]) new Object[this.capacity];
+        }
+
+        // 检查k是否已经存在
+        int index = rank(k);
+        if(index != -1) {
+            values[index] = v;
+            return;
         }
 
         // 开始插入
@@ -375,7 +382,7 @@ public class BinarySearchOrderedArraySymbolTable<K extends Comparable<K>, V> imp
     }
 
     public static void main(String[] args) {
-        BinarySearchOrderedArraySymbolTable<Integer, Integer> symbolTable = new BinarySearchOrderedArraySymbolTable<>();
+        BinarySearchST<Integer, Integer> symbolTable = new BinarySearchST<>();
 
         // 测试put()
         System.out.println("测试put()");

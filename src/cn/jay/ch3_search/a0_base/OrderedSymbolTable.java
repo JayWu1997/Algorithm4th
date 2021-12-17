@@ -7,7 +7,7 @@ package cn.jay.ch3_search.a0_base;
  * @Author: jay
  * @Date: 2021/5/29 19:18
  */
-public interface OrderedSymbolTable<K extends Comparable<K>,V> extends UnorderedSymbolTable<K, V> {
+public interface OrderedSymbolTable<K extends Comparable<K>,V> extends SymbolTable<K, V> {
     K min();
 
     K max();

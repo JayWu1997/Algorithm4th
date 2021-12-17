@@ -3,7 +3,7 @@ package cn.jay.ch3_search.a0_base;
 /*
     符号表(symbol table)的基本接口
  */
-public interface UnorderedSymbolTable<Key extends Comparable<Key>,Value>{
+public interface SymbolTable<Key extends Comparable<Key>,Value>{
 
     void put(Key key, Value value);
 

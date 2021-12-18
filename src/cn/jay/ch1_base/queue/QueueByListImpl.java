@@ -39,11 +39,12 @@ public class QueueByListImpl<T> implements QueueByList<T>{
             Node outTemp = out;
             @Override
             public boolean hasNext() {
-                return nodeNum!=0;
+                return (nodeNum--)!=0;
             }
 
             @Override
             public T next() {
+                if(outTemp == null) return null;
                 T result = outTemp.item;
                 outTemp = outTemp.next;
                 return result;

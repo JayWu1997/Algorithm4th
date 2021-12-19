@@ -86,6 +86,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         return rank(k, root);
     }
 
+    /**
+    * @Description: 返回k在以node为头结点的树中的排名，每有一个node的key小于k则排名加一
+    * @Param: [k, node]
+    * @return: int
+    * @Author: Jay
+    * @Date: 2021/12/19 1:42
+    */
     private int rank(K k, Node node){
         if(node == null) return 0;
         int cmp = k.compareTo(node.key);
@@ -201,7 +208,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
     }
 
     /**
-    * @Description: 真尼玛吊这个递归，投给我看炸了
+    * @Description: 真尼玛吊这个递归，头给我看炸了
     * @Param: [node, k]
     * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
     * @Author: Jay

@@ -20,6 +20,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         return min(root).key;
     }
 
+    /**
+    * @Description: 返回st中最小节点，递归获取左子节点直至某个节点的左子节点为空，并返回这个节点，根据二叉树的特性可知该节点为最小节点
+    * @Param: [node]
+    * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/19 15:35
+    */
     private Node min(Node node){
         if(node == null) return null;
         if(node.left == null)
@@ -36,6 +43,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
             return max(root).key;
     }
 
+    /**
+    * @Description: 返回st中最大节点，递归获取右子节点直至某个节点的右子节点为空，并返回这个节点，根据二叉树的特性可知该节点为最大节点
+    * @Param: [node]
+    * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/19 15:36
+    */
     private Node max(Node node){
         if(node == null) return null;
         if(node.right == null)
@@ -51,13 +65,23 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         return targetNode.key;
     }
 
+    /**
+    * @Description: 返回Key对象小于等于k的最大node。
+    *               若k小于根节点node，则结果一定在以左子节点为根节点的树中；
+    *               若k等于根节点node，则直接返回根节点node；
+    *               若k大于根节点node，当右子树中存在结果，则返回右子树中的结果，否则返回根节点
+    * @Param: [node, k]
+    * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/19 15:43
+    */
     private Node floor(Node node, K k){
         if (node == null) return null;
 
         int imp = k.compareTo(node.key);
         if (imp == 0) return node;
         if (imp < 0) return floor(node.left, k);
-        Node n = floor(node.right, k);
+        Node n = floor(node.right, k);  //  以右子树为根节点，n为右子树中的结果
         if(n != null) return n;
         else return node;
     }
@@ -69,6 +93,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         else return targetNode.key;
     }
 
+    /**
+    * @Description: 实现方法同floor
+    * @Param: [node, k]
+    * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/19 15:50
+    */
     private Node ceiling(Node node, K k){
         if (node == null) return null;
 
@@ -115,8 +146,18 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         return select(root, rank).key;
     }
 
+    /**
+    * @Description: 返回第rank(从零开始)小的节点。
+    *               根据二叉树的特性，我们从根节点开始遍历，若左子树的节点数大于等于rank+1，则目的节点一定在左子树中，继续遍历以左子节点为根节点的树
+    *               若以左子节点为根节点的树，其节点数小于rank+1，说明目的节点在以右子节点为根节点的树中，更改传入的rank值继续遍历以右子节点为根节点的树
+    *               当rank==0时，说明该根节点即为目的节点
+    * @Param: [node, rank]
+    * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/19 15:52
+    */
     private Node select(Node node, int rank){
-        if(rank+1 == 1)
+        if(rank == 0)
             return node;
         if(size(node.left) >= rank+1)
             return select(node.left, rank);
@@ -130,6 +171,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         root = deleteMin(root);
     }
 
+    /**
+    * @Description: 返回完成删除后的根节点，并更新所有节点的size
+    * @Param: [node]
+    * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/19 16:09
+    */
     private Node deleteMin(Node node){
         if (node.left == null) return node.right;
         node.left = deleteMin(node.left);
@@ -143,6 +191,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         root = deleteMax(root);
     }
 
+    /**
+     * @Description: 返回完成删除后的根节点，并更新所有节点的size
+     * @Param: [node]
+     * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
+     * @Author: Jay
+     * @Date: 2021/12/19 16:09
+     */
     private Node deleteMax(Node node){
         if (node.right == null) return node.left;
         node.right = deleteMax(node.right);

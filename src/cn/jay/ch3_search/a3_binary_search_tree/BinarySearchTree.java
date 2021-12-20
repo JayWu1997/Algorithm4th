@@ -264,6 +264,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
 
     /**
     * @Description: 真尼玛吊这个递归，头给我看炸了
+    *               返回删除key后的根节点
     * @Param: [node, k]
     * @return: cn.jay.ch3_search.a3_binary_search_tree.BinarySearchTree<K,V>.Node
     * @Author: Jay
@@ -277,8 +278,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
         if(cmp < 0) node.left = delete(node.left, k);
         else if(cmp > 0) node.right = delete(node.right, k);
         else {
-            if (node.left == null) return delete(node.right, k);
-            if (node.right == null) return delete(node.left, k);
+            if (node.left == null) return delete(node.right, k);    // 若左子节点为空，则直接返回右子节点
+            if (node.right == null) return delete(node.left, k);    // 若右子节点为空，则直接返回左子节点
 
             Node temp = node;
             node = min(temp.right);

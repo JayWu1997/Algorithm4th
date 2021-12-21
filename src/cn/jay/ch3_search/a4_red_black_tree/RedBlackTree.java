@@ -58,6 +58,11 @@ public class RedBlackTree<K extends Comparable<K>, V> implements OrderedSymbolTa
 
     }
 
+    public Node deleteMax(Node node){
+        // TODO
+        return null;
+    }
+
     @Override
     public int size(K lo, K hi) {
         return 0;
@@ -122,6 +127,59 @@ public class RedBlackTree<K extends Comparable<K>, V> implements OrderedSymbolTa
     @Override
     public void delete(K k) {
 
+    }
+    /**
+    * @Description:  考虑一下三种情况：
+     *               1、待删除节点没有子节点
+     *                  1.1、待删除节点为红色，直接删除
+     *                  1.2、待删除节点为黑色，进行平衡处理
+     *               2、待删除节点有一个子节点，则该子节点必为红节点，这可以根据红黑树黑节点完全平衡得出
+     *               3、待删除节点有两个子节点，则像二叉树删除节点一样从左子节点中找到最大节点或从右子节点中找到最小节点，设找到的节点为node，将node替换到待删除节点上
+     *                  问题就转化为了，删除node节点，由于node节点为叶节点，所以可能为红节点(转化为问题2)，可能为黑节点(转化为问题1)，删除node后，再将node移至待删除节点上即可
+     *
+     *              参考链接：https://www.jianshu.com/p/84416644c080
+     *
+    * @Param: [node, k]
+    * @return: cn.jay.ch3_search.a4_red_black_tree.RedBlackTree<K,V>.Node
+    * @Author: Jay
+    * @Date: 2021/12/20 19:29
+    */
+    private Node delete(Node node, K k){
+        /* 递归出口1 */
+        if (node == null) return null;
+
+        // 比较k和node.k
+        int cmp = k.compareTo(node.k);
+
+        if (cmp < 0)
+            node.left = delete(node.left, k);   // k<node.k，在左子树里递归删除
+        else if (cmp > 0)
+            node.right = delete(node.right, k); // k<node.k，在左子树里递归删除
+        else {
+            /* 递归出口2, k==node.k，进行删除操作 */
+            // 1、待删除节点没有子节点
+            if (node.left == null && node.right == null) {
+                // 1.1、待删除节点为红色，直接删除
+                if (node.color)
+                    return null;
+
+                // TODO 1.2、待删除节点为黑色，进行平衡处理
+            }
+            // 2、待删除节点有一个子节点，则该子节点必为红节点且为左子节点，这可以根据红黑树黑节点完全平衡和红节点在左侧得出
+            else if ((node.left != null && node.right == null) || (node.left == null && node.right != null)) {
+                node.left = null;
+            }
+            // 3、待删除节点有两个子节点
+            else {
+                deleteMax();
+            }
+
+        }
+
+
+        // 计算size
+        node.size = 1 + size(node.left) + size(node.right);
+        return node;
     }
 
     @Override

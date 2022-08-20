@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * @ClassName: GraphImpl
- * @Description: 接口Graph的实现类
+ * @Description: 接口Graph的实现类，无向无权图
  * @Author jay
  * @Date 2021/12/25 12:06
  */
@@ -17,18 +17,15 @@ public class GraphImpl {
 
     private ListBagImpl<Integer>[] adj; // 领接表
 
-    public GraphImpl(int v) {
-        this.v = v;
+    public void initGraphByKeyboardInput(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("请输入顶点数");
+        this.v = in.nextInt();
+        System.out.println("请输入边数");
+        this.e = in.nextInt();
         adj = (ListBagImpl<Integer>[]) new ListBagImpl[v];
         for (int i = 0; i < v; i++)
             adj[v] = new ListBagImpl<Integer>();
-    }
-
-    public GraphImpl(Scanner in) {
-        System.out.println("请输入顶点数");
-        v = in.nextInt();
-        System.out.println("请输入边数");
-        e = in.nextInt();
         for (int i = 0; i < e; i++) {
             System.out.println("请输入第" + (i + 1) + "条边的两个顶点");
             int v1 = in.nextInt();

@@ -23,6 +23,9 @@ public class DFS_v2_path {
         dfs(g, sv);
     }
 
+    /**
+     * 深度优先搜索算法，能够标记路径
+     */
     private void dfs(Graph g, int v){
         markArr[v] = true;
         for (Integer vertex : g.adj(v)) {

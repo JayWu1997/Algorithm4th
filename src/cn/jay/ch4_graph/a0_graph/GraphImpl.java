@@ -1,4 +1,4 @@
-package cn.jay.ch4_graph.a0_base;
+package cn.jay.ch4_graph.a0_graph;
 
 import cn.jay.ch1_base.bag.ListBagImpl;
 
@@ -21,7 +21,8 @@ public class GraphImpl implements Graph {
     /**
      * 通过键盘初始化图
      */
-    public void initByKeyboard() {
+    public void initByKeyboard()
+    {
         Scanner in = new Scanner(System.in);
         System.out.println("请输入顶点数");
         this.v = in.nextInt();

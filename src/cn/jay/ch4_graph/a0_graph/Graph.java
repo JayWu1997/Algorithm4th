@@ -1,4 +1,4 @@
-package cn.jay.ch4_graph.a0_base;
+package cn.jay.ch4_graph.a0_graph;
 
 public interface Graph {
     int getV();

@@ -173,7 +173,7 @@ public class GraphImpl implements Graph {
                 .append(File.separator).append("cn")
                 .append(File.separator).append("jay")
                 .append(File.separator).append("ch4_graph")
-                .append(File.separator).append("a0_base")
+                .append(File.separator).append("a0_graph")
                 .append(File.separator).append("graph.txt");
         GraphImpl graph = new GraphImpl();
         try {

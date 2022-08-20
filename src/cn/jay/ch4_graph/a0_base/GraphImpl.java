@@ -10,13 +10,16 @@ import java.util.Scanner;
  * @Author jay
  * @Date 2021/12/25 12:06
  */
-public class GraphImpl {
+public class GraphImpl implements Graph{
     private int v;  // 顶点数
 
-    private int e;  //  边数
+    private int e;  // 边数
 
     private ListBagImpl<Integer>[] adj; // 领接表
 
+    /**
+     * 通过键盘初始化图
+     */
     public void initGraphByKeyboardInput(){
         Scanner in = new Scanner(System.in);
         System.out.println("请输入顶点数");
@@ -45,8 +48,26 @@ public class GraphImpl {
         return adj[v];
     }
 
+    /**
+     * 获取顶点数
+     */
+    @Override
+    public int getV() {
+        return this.v;
+    }
+
+    /**
+     * 获取边数
+     */
+    @Override
+    public int getE() {
+        return this.e;
+    }
+
+    /**
+     * 添加边
+     */
     public void addEdge(int v1, int v2) {
-        adj[v1].add(v1);
         adj[v1].add(v2);
     }
 

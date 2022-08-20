@@ -3,7 +3,7 @@ package cn.jay.ch1_base.bag;
 import java.util.Iterator;
 
 
-public class BagByListImpl<T> implements BagByList<T>{
+public class ListBagImpl<T> implements BagByList<T> {
     private Node head;
     private int nodeNum;
 
@@ -12,6 +12,7 @@ public class BagByListImpl<T> implements BagByList<T>{
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             Node headTemp = head;
+
             @Override
             public boolean hasNext() {
                 return headTemp != null;
@@ -45,14 +46,14 @@ public class BagByListImpl<T> implements BagByList<T>{
         return nodeNum == 0;
     }
 
-    class Node{
+    class Node {
         T item;
         Node next;
     }
 
     public static void main(String[] args) {
-        BagByList<String> bag = new BagByListImpl<>();
-        for(int i = 1; i <= 10; i++) {
+        BagByList<String> bag = new ListBagImpl<>();
+        for (int i = 1; i <= 10; i++) {
             bag.add("String No" + i);
             System.out.println("装入：" + "String No" + i);
         }

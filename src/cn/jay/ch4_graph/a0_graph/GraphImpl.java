@@ -161,11 +161,15 @@ public class GraphImpl implements Graph {
      */
     public static void main(String[] args) {
         // TODO
-        // test_initByFile();
+         test_initFromFile();
         // test_initByKeyboard();
     }
 
-    private static void test_initByFile() {
+    private static void test_initFromFile() {
+        System.out.println(initGraphFromFile());
+    }
+
+    public static Graph initGraphFromFile() {
         // 获得工程目录
         StringBuilder builder = new StringBuilder(new File("").getAbsolutePath());
         // 填充文件地址
@@ -178,11 +182,12 @@ public class GraphImpl implements Graph {
         GraphImpl graph = new GraphImpl();
         try {
             graph.initByFile(builder.toString());
-            System.out.println(graph);
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             System.out.println("文件不存在");
+            return null;
         }
+        return graph;
     }
 
     private static void test_initByKeyboard() {

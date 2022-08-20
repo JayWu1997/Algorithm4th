@@ -3,9 +3,6 @@ package cn.jay.ch4_graph.a1_search;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 /**
  * 找到图中与指定顶点 sv 连通的其他顶点，使用DFS算法，没有保存路径
  */
@@ -38,30 +35,16 @@ public class DFS_v1 {
     }
 
     private static void test() {
-        // 获得工程目录
-        StringBuilder builder = new StringBuilder(new File("").getAbsolutePath());
-        // 填充文件地址
-        builder.append(File.separator).append("src")
-                .append(File.separator).append("cn")
-                .append(File.separator).append("jay")
-                .append(File.separator).append("ch4_graph")
-                .append(File.separator).append("a0_graph")
-                .append(File.separator).append("graph.txt");
-        GraphImpl graph = new GraphImpl();
-        try {
-            graph.initByFile(builder.toString());
+        Graph graph = GraphImpl.initGraphFromFile();
+        int sourceVertex = 9;
+        if(graph != null){
             System.out.println(graph);
-
-            // TODO
-            DFS_v1 dfsV1 = new DFS_v1(graph, 9);
-            System.out.println("连通的点：");
+            DFS_v1 dfsV1 = new DFS_v1(graph, sourceVertex);
+            System.out.println("顶点 " + sourceVertex + " 连通的点：");
             for (int i = 0; i < dfsV1.markArr.length; i++) {
                 if (dfsV1.marked(i))
                     System.out.print(i + " ");
             }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-            System.out.println("文件不存在");
         }
     }
 }

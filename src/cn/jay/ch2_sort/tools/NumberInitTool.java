@@ -1,5 +1,6 @@
 package cn.jay.ch2_sort.tools;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -12,8 +13,35 @@ public class NumberInitTool {
     // 取余参数
     private static int REMAINDER = 1000000;
 
-    public static void initRandomNums() throws Exception{
-        PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
+    public static String getNumsFilePath(){
+        // 获得工程目录
+        StringBuilder builder = new StringBuilder();
+        // 填充文件地址
+        builder.append("src")
+                .append(File.separator).append("cn")
+                .append(File.separator).append("jay")
+                .append(File.separator).append("ch2_sort")
+                .append(File.separator).append("sort")
+                .append(File.separator).append("numbers.txt");
+        return builder.toString();
+    }
+
+    public static void initNums(int numType, int arrayLength, int modArg) throws Exception {
+        NUMBER_OF_PARAMS = arrayLength;
+        REMAINDER = modArg;
+
+        switch (numType) {
+            case 0 -> initRandomNums();
+            case 1 -> initIncreasingNums();
+            case 2 -> initDescendingNums();
+            case 3 -> initHalf0Half1Nums();
+            case 4 -> initHalf0Quarter1Quarter2Nums();
+            case 5 -> initHalf0HalfRandomNums();
+        }
+    }
+
+    private static void initRandomNums() throws Exception{
+        PrintWriter out = new PrintWriter(new FileWriter(getNumsFilePath()), true);
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for(int i = 0; i < NUMBER_OF_PARAMS; i++){
@@ -24,8 +52,8 @@ public class NumberInitTool {
         out.close();
     }
 
-    public static void initIncreasingNums() throws Exception{
-        PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
+    private static void initIncreasingNums() throws Exception{
+        PrintWriter out = new PrintWriter(new FileWriter(getNumsFilePath()), true);
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < NUMBER_OF_PARAMS; i++){
             sb.append("" + i + " ");
@@ -35,8 +63,8 @@ public class NumberInitTool {
         out.close();
     }
 
-    public static void initDescendingNums() throws Exception{
-        PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
+    private static void initDescendingNums() throws Exception{
+        PrintWriter out = new PrintWriter(new FileWriter(getNumsFilePath()), true);
         StringBuilder sb = new StringBuilder();
         for(int i = NUMBER_OF_PARAMS-1; i >= 0; i--){
             sb.append("" + i + " ");
@@ -46,8 +74,8 @@ public class NumberInitTool {
         out.close();
     }
 
-    public static void initHalf0Half1Nums() throws Exception{
-        PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
+    private static void initHalf0Half1Nums() throws Exception{
+        PrintWriter out = new PrintWriter(new FileWriter(getNumsFilePath()), true);
         StringBuilder sb = new StringBuilder();
         for(int i = NUMBER_OF_PARAMS-1; i >= 0; i--){
             sb.append("" + i%2 + " ");
@@ -57,8 +85,8 @@ public class NumberInitTool {
         out.close();
     }
 
-    public static void initHalf0Quarter1Quarter2Nums() throws Exception{
-        PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
+    private static void initHalf0Quarter1Quarter2Nums() throws Exception{
+        PrintWriter out = new PrintWriter(new FileWriter(getNumsFilePath()), true);
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < NUMBER_OF_PARAMS; i++){
             if(i%4 == 0 || i%4 == 1)
@@ -73,8 +101,8 @@ public class NumberInitTool {
         out.close();
     }
 
-    public static void initHalf0HalfRandomNums() throws Exception{
-        PrintWriter out = new PrintWriter(new FileWriter("numbers.txt"), true);
+    private static void initHalf0HalfRandomNums() throws Exception{
+        PrintWriter out = new PrintWriter(new FileWriter(getNumsFilePath()), true);
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for(int i = 0; i < NUMBER_OF_PARAMS; i++){

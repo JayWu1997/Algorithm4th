@@ -22,6 +22,9 @@ public class QueueImpl<T> implements Queue<T> {
 
     @Override
     public T dequeue() {
+        // 判断队列是否为空
+        if(this.nodeNum == 0)
+            return null;
         T t = out.item;
         out = out.next;
         nodeNum--;

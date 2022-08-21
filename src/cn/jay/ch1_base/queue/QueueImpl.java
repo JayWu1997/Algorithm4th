@@ -2,7 +2,9 @@ package cn.jay.ch1_base.queue;
 
 import java.util.Iterator;
 
-// 头出尾进,尾指向头
+/**
+ * 头出尾进,尾指向头，使用链表实现
+ */
 public class QueueImpl<T> implements Queue<T> {
     private Node in;
     private Node out;

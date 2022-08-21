@@ -2,6 +2,9 @@ package cn.jay.ch1_base.stack;
 
 import java.util.Iterator;
 
+/**
+ * 使用链表实现的栈
+ */
 public class ListStackImpl<T> implements Stack<T> {
     private int itemNum;
     private Node top;

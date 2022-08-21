@@ -2,9 +2,8 @@ package cn.jay.ch1_base.stack;
 
 import java.util.Iterator;
 
-/*
-    不定容栈，元素始终在栈大小的四分之一到二分之一
-    使用数组实现
+/**
+ * 不定容栈，元素始终在栈大小的四分之一到二分之一, 使用数组实现
  */
 public class ArrayStackImpl<T> implements Stack<T> {
 

@@ -1,7 +1,7 @@
 package homework;
 
-import cn.jay.ch1_base.stack.stackImplByList.StackByList;
-import cn.jay.ch1_base.stack.stackImplByList.StackByListImpl;
+import cn.jay.ch1_base.stack.stackImplByList.ListStack;
+import cn.jay.ch1_base.stack.stackImplByList.ListStackImpl;
 
 public class Prb1_3_4 {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class Prb1_3_4 {
     }
 
     public static boolean test(String in){
-        StackByList<Character> stack = new StackByListImpl<>();
+        ListStack<Character> stack = new ListStackImpl<>();
         for(int i = 0; i < in.length(); i++){
             if(in.charAt(i) == '(' || in.charAt(i) == '{' || in.charAt(i) == '[')
                 stack.push(in.charAt(i));

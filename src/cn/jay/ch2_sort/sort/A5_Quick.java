@@ -9,12 +9,7 @@ public class A5_Quick implements Sort {
     }
 
     /**
-     * @Method      sort
-     * @Description 快速排序的排序算法，先找基准值并切割，再将左右两块递归排序
-     * @param a     需要排序的数组
-     * @param lo    数组排序的起点坐标（包含）
-     * @param hi    数组排序的终点坐标（包含）
-     * @param M     在规模小于等于M时使用插入排序优化，一般 5 <= M <= 15
+     * 快速排序算法，先找基准值并切割，再将左右两块递归排序
      */
     public void sort(Comparable[] a, final int lo, final int hi, final int M){
 

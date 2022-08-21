@@ -1,8 +1,8 @@
 package cn.jay.ch2_sort.sort;
 
-import cn.jay.ch2_sort.sort.base.SortTemplate;
+import cn.jay.ch2_sort.sort.base.Sort;
 
-public class A3_Shell implements SortTemplate {
+public class A3_Shell implements Sort {
 
     public void sort(Comparable[] a) {
         int N = a.length;

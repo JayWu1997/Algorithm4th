@@ -1,6 +1,6 @@
 package cn.jay.ch2_sort.sort;
 
-import cn.jay.ch2_sort.sort.base.SortTemplate;
+import cn.jay.ch2_sort.sort.base.Sort;
 
 /**
  * @ClassName:      A6_Quick3Way
@@ -8,7 +8,7 @@ import cn.jay.ch2_sort.sort.base.SortTemplate;
  * @Author:         jay
  * @Date:           2021/4/22 23:40
  */
-public class A6_Quick3Way implements SortTemplate {
+public class A6_Quick3Way implements Sort {
 
     @Override
     public void sort(Comparable[] a) {

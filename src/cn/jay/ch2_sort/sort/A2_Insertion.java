@@ -1,8 +1,8 @@
 package cn.jay.ch2_sort.sort;
 
-import cn.jay.ch2_sort.sort.base.SortTemplate;
+import cn.jay.ch2_sort.sort.base.Sort;
 
-public class A2_Insertion implements SortTemplate {
+public class A2_Insertion implements Sort {
 
     public void sort(Comparable[] a, final int lo, final int hi){
         for(int i = lo + 1; i < hi + 1; i++){

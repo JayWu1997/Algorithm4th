@@ -1,11 +1,14 @@
 package cn.jay.ch2_sort.sort.base;
 
 
+import cn.jay.ch2_sort.tools.NumberInitTool;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-public interface SortTemplate {
+public interface Sort {
 
     void sort(Comparable[] a);
 
@@ -48,7 +51,20 @@ public interface SortTemplate {
      * @Description 从 numbers.txt 文件获取Integer数组
      */
     default Comparable[] getIntegerParamsFromFile() throws Exception{
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream("numbers.txt")));
+
+        NumberInitTool.initRandomNums();
+
+        // 获得工程目录
+        StringBuilder builder = new StringBuilder();
+        // 填充文件地址
+        builder.append("src")
+                .append(File.separator).append("cn")
+                .append(File.separator).append("jay")
+                .append(File.separator).append("ch2_sort")
+                .append(File.separator).append("sort")
+                .append(File.separator).append("numbers.txt");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(builder.toString())));
         String line;
         if((line = in.readLine()) != null) {
             String[] numbers = line.split(" ");

@@ -1,8 +1,8 @@
 package cn.jay.ch2_sort.sort;
 
-import cn.jay.ch2_sort.sort.base.SortTemplate;
+import cn.jay.ch2_sort.sort.base.Sort;
 
-public class A5_Quick implements SortTemplate {
+public class A5_Quick implements Sort {
     @Override
     public void sort(Comparable[] a) {
         sort(a, 0, a.length-1, 5);

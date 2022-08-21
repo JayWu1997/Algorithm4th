@@ -1,6 +1,6 @@
 package cn.jay.ch2_sort.sort;
 
-import cn.jay.ch2_sort.sort.base.SortTemplate;
+import cn.jay.ch2_sort.sort.base.Sort;
 
 /**
  * @ClassName: A8_HeapSort
@@ -8,7 +8,7 @@ import cn.jay.ch2_sort.sort.base.SortTemplate;
  * @Author: jay
  * @Date: 2021/4/24 20:34
  */
-public class A8_HeapSort implements SortTemplate {
+public class A8_HeapSort implements Sort {
     @Override
     public void sort(Comparable[] a) {
         // i的初始值为最后一个元素的父节点

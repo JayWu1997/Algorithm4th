@@ -1,6 +1,6 @@
 package cn.jay.ch2_sort.sort;
 
-import cn.jay.ch2_sort.sort.base.SortTemplate;
+import cn.jay.ch2_sort.sort.base.Sort;
 
 /**
  * @ClassName:      A4_Merge
@@ -8,7 +8,7 @@ import cn.jay.ch2_sort.sort.base.SortTemplate;
  * @Author:         jay
  * @Date:           2021/4/22 21:48
  */
-public class A4_Merge implements SortTemplate {
+public class A4_Merge implements Sort {
 
     public static Comparable[] aTemp;
 

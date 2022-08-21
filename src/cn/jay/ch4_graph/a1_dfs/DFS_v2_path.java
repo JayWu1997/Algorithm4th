@@ -60,8 +60,8 @@ public class DFS_v2_path {
     private static void test(){
         Graph graph = GraphImpl.initGraphFromFile();
         if(graph != null){
-            DFS_v2_path dfsV2Path = new DFS_v2_path(graph, 11);
-            Bag<Integer> bag = dfsV2Path.getPath(9);
+            DFS_v2_path dfsV2Path = new DFS_v2_path(graph, 2);
+            Bag<Integer> bag = dfsV2Path.getPath(5);
 
             if(bag == null){
                 System.out.println("未连通");

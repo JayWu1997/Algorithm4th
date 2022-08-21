@@ -2,6 +2,7 @@ package cn.jay.ch2_sort.tools;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
 
@@ -13,6 +14,17 @@ public class NumberInitTool {
     // 取余参数
     private static int REMAINDER = 1000000;
 
+    public static void writeResultToFile(Comparable[] a) throws IOException {
+        PrintWriter out = new PrintWriter(new FileWriter(getResultFilePath()), true);
+        StringBuilder sb = new StringBuilder();
+        for (Comparable c : a)
+            sb.append((c.toString())).append(" ");
+        out.write(sb.toString());
+        out.flush();
+        out.close();
+
+    }
+
     public static String getNumsFilePath(){
         // 获得工程目录
         StringBuilder builder = new StringBuilder();
@@ -23,6 +35,19 @@ public class NumberInitTool {
                 .append(File.separator).append("ch2_sort")
                 .append(File.separator).append("sort")
                 .append(File.separator).append("numbers.txt");
+        return builder.toString();
+    }
+
+    public static String getResultFilePath(){
+        // 获得工程目录
+        StringBuilder builder = new StringBuilder();
+        // 填充文件地址
+        builder.append("src")
+                .append(File.separator).append("cn")
+                .append(File.separator).append("jay")
+                .append(File.separator).append("ch2_sort")
+                .append(File.separator).append("sort")
+                .append(File.separator).append("result.txt");
         return builder.toString();
     }
 

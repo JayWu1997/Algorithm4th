@@ -1,8 +1,10 @@
 package cn.jay.ch1_base.stack.stackImplByList;
 
+import cn.jay.ch1_base.stack.Stack;
+
 import java.util.Iterator;
 
-public class ListStackImpl<T> implements ListStack<T> {
+public class ListStackImpl<T> implements Stack<T> {
     private int itemNum;
     private Node top;
 
@@ -68,7 +70,7 @@ public class ListStackImpl<T> implements ListStack<T> {
     }
 
     public static void main(String[] args) {
-        ListStack<String> stack = new ListStackImpl<>();
+        Stack<String> stack = new ListStackImpl<>();
         for (int i = 0; i < 20; i++) {
             stack.push("Item:" + (i + 1));
             System.out.println("添加Item：" + (i + 1) + "\t\t当前栈个数：" + stack.size());

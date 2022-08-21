@@ -1,12 +1,14 @@
 package cn.jay.ch1_base.stack.unfixedcapacitystackwitharray;
 
+import cn.jay.ch1_base.stack.Stack;
+
 import java.util.Iterator;
 
 /*
     不定容栈，元素始终在栈大小的四分之一到二分之一
     使用数组实现
  */
-public class ArrayStackImpl<T> implements ArrayStack<T> {
+public class ArrayStackImpl<T> implements Stack<T> {
 
     private int cap;  //容量
     private T[] array; //元素数组
@@ -59,7 +61,6 @@ public class ArrayStackImpl<T> implements ArrayStack<T> {
         return index==0;
     }
 
-    @Override
     public int getCapacity() {
         return cap;
     }
@@ -93,7 +94,7 @@ public class ArrayStackImpl<T> implements ArrayStack<T> {
 
 
     public static void main(String[] args) {
-        ArrayStack<String> stack = new ArrayStackImpl<>(1);
+        ArrayStackImpl<String> stack = new ArrayStackImpl<>(1);
         for (int i=0; i<100; i++){
             stack.push(i+"");
             System.out.println(i+"-"+stack.getCapacity());

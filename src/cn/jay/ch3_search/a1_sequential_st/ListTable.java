@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 // 关于 泛型继承 的相关问题 https://stackoverflow.com/questions/65913465/unexpected-bound-error-on-generics-with-two-generics
-public class SequentialST<K extends Comparable<K>, V> implements SymbolTable<K, V> {
+public class ListTable<K extends Comparable<K>, V> implements SymbolTable<K, V> {
 
     private Node first;
     private int size = 0;
@@ -31,7 +31,7 @@ public class SequentialST<K extends Comparable<K>, V> implements SymbolTable<K, 
     }
 
     public static void main(String[] args) {
-        SequentialST<String, Integer> st = new SequentialST<String, Integer>();
+        ListTable<String, Integer> st = new ListTable<String, Integer>();
 
         System.out.println("**** 测试put（） ****");
         for (int i = 0; i < 100; i++) {

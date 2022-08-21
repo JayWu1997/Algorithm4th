@@ -12,7 +12,8 @@ public class A6_Quick3Way implements Sort {
 
     @Override
     public void sort(Comparable[] a) {
-        sort(a, 0, a.length-1, 5);
+        A2_Insertion insertion = new A2_Insertion();
+        sort(insertion, a, 0, a.length-1, 5);
     }
 
     /**
@@ -23,29 +24,33 @@ public class A6_Quick3Way implements Sort {
      * @param hi    数组排序的终点坐标（包含）
      * @param M     在规模小于等于M时使用插入排序优化，一般 5 <= M <= 15
      */
-    public void sort(Comparable[] a, final int lo, final int hi, final int M){
+    public void sort(A2_Insertion insertion, Comparable[] a, final int lo, final int hi, final int M){
 
         // if(lo >= hi) return;
         // 改进的快速排序（相对上一段注释的代码），对小规模部分使用插入排序(规模大小由函数参数M决定，一般在5~15)
         if(lo >= hi - M) {
-            new A2_Insertion().sort(a, lo, hi);
+            insertion.sort(a, lo, hi);
             return;
         }
 
         // 三取样切分
-        middleOfFirst3Nums(a, lo);
+        middleOfFirst3Nums(insertion, a, lo);
 
         // 三向切分
         int lt = lo, gt = hi, i = lo + 1;
 
         while(i <= gt){
             if(less(a[i], a[lt])){
-                exchange(a, lt, i);
+                Comparable temp = a[lt];
+                a[lt] = a[i];
+                a[i] = temp;
                 i++;
                 lt++;
             }
             else if(less(a[lt], a[i])){
-                exchange(a, gt, i);
+                Comparable temp = a[gt];
+                a[gt] = a[i];
+                a[i] = temp;
                 gt--;
             }
             else {
@@ -53,8 +58,8 @@ public class A6_Quick3Way implements Sort {
             }
         }
 
-        sort(a, lo, lt - 1, 5);
-        sort(a, gt + 1, hi, 5);
+        sort(insertion, a, lo, lt - 1, 5);
+        sort(insertion, a, gt + 1, hi, 5);
     }
 
     /**
@@ -63,12 +68,14 @@ public class A6_Quick3Way implements Sort {
      * @param a     待排序数组
      * @param lo    待排序部分起始坐标
      */
-    public void middleOfFirst3Nums(Comparable[] a, final int lo){
-        new A2_Insertion().sort(a, lo, lo+2);
-        exchange(a, lo, lo+1);
+    public void middleOfFirst3Nums(A2_Insertion insertion, Comparable[] a, final int lo){
+        insertion.sort(a, lo, lo+2);
+        Comparable temp = a[lo];
+        a[lo] = a[lo+1];
+        a[lo+1] = temp;
     }
 
     public static void main(String[] args) throws Exception{
-        new A6_Quick3Way().executeSort(3, 100000, 1000);
+        new A6_Quick3Way().executeSort(0, 1000000, 1000);
     }
 }

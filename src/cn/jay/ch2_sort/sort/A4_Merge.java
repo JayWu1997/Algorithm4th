@@ -87,6 +87,6 @@ public class A4_Merge implements Sort {
 
     public static void main(String[] args) throws Exception{
         A4_Merge merge = new A4_Merge();
-        merge.executeSort(3, 100000, 1000);
+        merge.executeSort(2, 100000, 1000);
     }
 }

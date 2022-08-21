@@ -17,7 +17,9 @@ public class A8_HeapSort implements Sort {
         }
 
         for(int i = a.length - 1; i > 0; i--){
-            exchange(a, 0, i);
+            Comparable temp = a[0];
+            a[0] = a[i];
+            a[i] = temp;
             sink(a, 0, i);
         }
     }
@@ -27,7 +29,9 @@ public class A8_HeapSort implements Sort {
             int k = 2*i + 1;
             if(k < N - 1 && less(a[k], a[k+1])) k++;
             if(less(a[k], a[i])) break;
-            exchange(a, i, k);
+            Comparable temp = a[i];
+            a[i] = a[k];
+            a[k] = temp;
             i = k;
         }
     }

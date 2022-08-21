@@ -10,12 +10,14 @@ public class A1_Selection implements Sort {
             for(int j = i+1; j < a.length; j++){
                 if(less(a[j],a[min])) min = j;
             }
-            exchange(a, i, min);
+            Comparable temp = a[i];
+            a[i] = a[min];
+            a[min] = temp;
         }
     }
 
     public static void main(String[] args) throws Exception{
         A1_Selection selection = new A1_Selection();
-        selection.executeSort(3, 100, 1000);
+        selection.executeSort(2, 10000, 1000);
     }
 }

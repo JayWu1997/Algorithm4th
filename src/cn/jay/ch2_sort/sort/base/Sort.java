@@ -26,15 +26,6 @@ public interface Sort {
     }
 
     /**
-     * 交换数组中两个下标对应的值
-     */
-    default void exchange(Comparable[] a, int i, int j){
-        Comparable temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }
-
-    /**
      * 输出排序前的数组
      */
     default void show(Comparable[] a){
@@ -82,8 +73,11 @@ public interface Sort {
         long beginTime = System.currentTimeMillis();
         sort(a);
         long endTime = System.currentTimeMillis();
-        if(isSorted(a))
+        if(isSorted(a)){
             System.out.println("排序成功!");
+            NumberInitTool.writeResultToFile(a);
+        }
+
         else
             System.out.println("排序失败!");
         System.out.println("耗时：" + (endTime-beginTime)+"ms");

@@ -13,7 +13,9 @@ public class A3_Shell implements Sort {
             for (int i = h; i < N; i++) {
                 // 从第h位开始插入
                 for(int j = i; j>=h && less(a[j], a[j-h]); j-=h){
-                    exchange(a, j, j-h);
+                    Comparable temp = a[j];
+                    a[j] = a[j-h];
+                    a[j-h] = temp;
                 }
             }
             h /= 3;
@@ -22,6 +24,6 @@ public class A3_Shell implements Sort {
 
     public static void main(String[] args) throws Exception{
         A3_Shell shell = new A3_Shell();
-        shell.executeSort(3, 100000, 1000);
+        shell.executeSort(2, 100000, 1000);
     }
 }

@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * 头出尾进,尾指向头，使用链表实现
  */
-public class QueueImpl<T> implements Queue<T> {
+public class ListQueue<T> implements Queue<T> {
     private Node in;
     private Node out;
     private int nodeNum;
@@ -74,7 +74,7 @@ public class QueueImpl<T> implements Queue<T> {
     }
 
     public static void main(String[] args) {
-        Queue<String> queue = new QueueImpl<>();
+        Queue<String> queue = new ListQueue<>();
 
         // 测试装载
         for (int i = 1; i <= 10; i++)

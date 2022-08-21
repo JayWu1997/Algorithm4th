@@ -14,8 +14,8 @@ public class ArrayStackImpl<T> implements Stack<T> {
     private T[] array; //元素数组
     private int index = 0; //当前栈顶索引
 
-    ArrayStackImpl(int cap){
-        if(cap < 4) cap=4;
+    ArrayStackImpl(int cap) {
+        if (cap < 4) cap = 4;
         this.cap = cap;
         array = (T[]) new Object[cap];
     }
@@ -23,15 +23,15 @@ public class ArrayStackImpl<T> implements Stack<T> {
     @Override
     public void push(T item) {
 
-        if(index >= cap/2) // 检查是否栈溢出
-            resize(2*cap);
+        if (index >= cap / 2) // 检查是否栈溢出
+            resize(2 * cap);
         array[index++] = item;
     }
 
     @Override
     public T pop() {
         // 判断栈是否为空
-        if(isEmpty())
+        if (isEmpty())
             return null;
 
         T item = array[--index];
@@ -39,16 +39,16 @@ public class ArrayStackImpl<T> implements Stack<T> {
         array[index] = null;
 
         //检查是否需要缩小数组
-        if(index>0 && index < cap/4)
-            resize(cap/2);
+        if (index > 0 && index < cap / 4)
+            resize(cap / 2);
         return item;
     }
 
     @Override
     public T peek() {
-        if(isEmpty())
+        if (isEmpty())
             return null;
-        return array[index-1];
+        return array[index - 1];
     }
 
     @Override
@@ -58,20 +58,17 @@ public class ArrayStackImpl<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return index==0;
-    }
-
-    public int getCapacity() {
-        return cap;
+        return index == 0;
     }
 
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
             int nowIndex = 0; //当前下标
+
             @Override
             public boolean hasNext() {
-                return !(nowIndex==index-1);
+                return !(nowIndex == index - 1);
             }
 
             @Override
@@ -91,19 +88,21 @@ public class ArrayStackImpl<T> implements Stack<T> {
         cap = newSize;
     }
 
-
+    public int getCapacity() {
+        return cap;
+    }
 
     public static void main(String[] args) {
         ArrayStackImpl<String> stack = new ArrayStackImpl<>(1);
-        for (int i=0; i<100; i++){
-            stack.push(i+"");
-            System.out.println(i+"-"+stack.getCapacity());
+        for (int i = 0; i < 100; i++) {
+            stack.push(i + "");
+            System.out.println(i + "-" + stack.getCapacity());
         }
 
-        for(String s : stack)
+        for (String s : stack)
 
-        for(int i=100; i>0; i--){
-            System.out.println(stack.pop()+"-"+stack.getCapacity());
-        }
+            for (int i = 100; i > 0; i--) {
+                System.out.println(stack.pop() + "-" + stack.getCapacity());
+            }
     }
 }

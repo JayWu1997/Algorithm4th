@@ -1,4 +1,4 @@
-package cn.jay.ch4_graph.a1_search;
+package cn.jay.ch4_graph.a1_dfs;
 
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;

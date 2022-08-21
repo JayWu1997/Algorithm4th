@@ -1,7 +1,7 @@
 package cn.jay.ch4_graph.a1_dfs;
 
 import cn.jay.ch1_base.bag.Bag;
-import cn.jay.ch1_base.bag.BagByListImpl;
+import cn.jay.ch1_base.bag.ListBag;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
 
@@ -40,7 +40,7 @@ public class DFS_v2_path {
      * 获取从 v 到 sv 的路径
      */
     public Bag<Integer> getPath(int v){
-        Bag<Integer> bag = new BagByListImpl<>();
+        Bag<Integer> bag = new ListBag<>();
         while(v != -1 && v != sv){
             bag.add(v);
             v = lv[v];

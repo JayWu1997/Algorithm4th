@@ -1,6 +1,6 @@
 package cn.jay.ch4_graph.a0_graph;
 
-import cn.jay.ch1_base.bag.BagByListImpl;
+import cn.jay.ch1_base.bag.ListBag;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +16,7 @@ public class GraphImpl implements Graph {
 
     private int e;  // 边数
 
-    private BagByListImpl<Integer>[] adj; // 领接表
+    private ListBag<Integer>[] adj; // 领接表
 
     /**
      * 通过键盘初始化图
@@ -28,9 +28,9 @@ public class GraphImpl implements Graph {
         this.v = in.nextInt();
         System.out.println("请输入边数");
         this.e = in.nextInt();
-        adj = (BagByListImpl<Integer>[]) new BagByListImpl[v];
+        adj = (ListBag<Integer>[]) new ListBag[v];
         for (int i = 0; i < v; i++)
-            adj[i] = new BagByListImpl<Integer>();
+            adj[i] = new ListBag<Integer>();
         for (int i = 0; i < e; i++) {
             System.out.println("请输入第" + (i + 1) + "条边的两个顶点");
             int v1 = in.nextInt();
@@ -51,9 +51,9 @@ public class GraphImpl implements Graph {
         Scanner in = new Scanner(fileInputStream);
         this.v = in.nextInt();
         this.e = in.nextInt();
-        adj = (BagByListImpl<Integer>[]) new BagByListImpl[v];
+        adj = (ListBag<Integer>[]) new ListBag[v];
         for (int i = 0; i < v; i++)
-            adj[i] = new BagByListImpl<Integer>();
+            adj[i] = new ListBag<Integer>();
         for (int i = 0; i < e; i++) {
             int v1 = in.nextInt();
             int v2 = in.nextInt();
@@ -135,7 +135,7 @@ public class GraphImpl implements Graph {
      */
     public double avgDegree() {
         int sum = 0;
-        for (BagByListImpl<Integer> bag : adj) {
+        for (ListBag<Integer> bag : adj) {
             sum += bag.size();
         }
         return ((double) sum) / this.v;

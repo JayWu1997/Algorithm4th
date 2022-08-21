@@ -3,7 +3,7 @@ package cn.jay.ch1_base.bag;
 import java.util.Iterator;
 
 
-public class BagByListImpl<T> implements Bag<T> {
+public class ListBag<T> implements Bag<T> {
     private Node head;
     private int nodeNum;
 
@@ -52,7 +52,7 @@ public class BagByListImpl<T> implements Bag<T> {
     }
 
     public static void main(String[] args) {
-        Bag<String> bag = new BagByListImpl<>();
+        Bag<String> bag = new ListBag<>();
         for (int i = 1; i <= 10; i++) {
             bag.add("String No" + i);
             System.out.println("装入：" + "String No" + i);

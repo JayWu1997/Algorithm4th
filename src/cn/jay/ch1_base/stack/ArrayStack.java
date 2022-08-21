@@ -5,13 +5,13 @@ import java.util.Iterator;
 /**
  * 不定容栈，元素始终在栈大小的四分之一到二分之一, 使用数组实现
  */
-public class ArrayStackImpl<T> implements Stack<T> {
+public class ArrayStack<T> implements Stack<T> {
 
     private int cap;  //容量
     private T[] array; //元素数组
     private int index = 0; //当前栈顶索引
 
-    ArrayStackImpl(int cap) {
+    ArrayStack(int cap) {
         if (cap < 4) cap = 4;
         this.cap = cap;
         array = (T[]) new Object[cap];
@@ -90,7 +90,7 @@ public class ArrayStackImpl<T> implements Stack<T> {
     }
 
     public static void main(String[] args) {
-        ArrayStackImpl<String> stack = new ArrayStackImpl<>(1);
+        ArrayStack<String> stack = new ArrayStack<>(1);
         for (int i = 0; i < 100; i++) {
             stack.push(i + "");
             System.out.println(i + "-" + stack.getCapacity());

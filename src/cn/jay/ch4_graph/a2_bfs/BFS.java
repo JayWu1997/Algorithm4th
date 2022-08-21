@@ -13,13 +13,13 @@ import java.util.Arrays;
  * 广度优先搜索算法，能够找出两个点之间的最短路径
  */
 public class BFS {
-    private final boolean[] markArr;
+    private final boolean[] visitedArr;
     private final int sv; // source vertex
     private final int[] lv; // last vertex 从 sv 到数组下标对应顶点的最短路径上的倒数第二个顶点 eg: 0-1-2-3  则lv[3]=2
     private final Queue<Integer> queue = new ListQueue<>();
 
     public BFS(Graph g, int sv) {
-        this.markArr = new boolean[g.getV()];
+        this.visitedArr = new boolean[g.getV()];
         this.lv = new int[g.getV()];
         Arrays.fill(this.lv, -1);
         this.sv = sv;
@@ -30,9 +30,9 @@ public class BFS {
      * 广度优先搜索算法，能够记录路径
      */
     private void bfs(Graph g, int v) {
-        markArr[v] = true;
+        visitedArr[v] = true;
         for (Integer i : g.adj(v)) {
-            if (!markArr[i]) {
+            if (!visitedArr[i]) {
                 queue.enqueue(i);
                 lv[i] = v;
             }

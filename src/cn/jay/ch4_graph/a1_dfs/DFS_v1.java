@@ -8,10 +8,10 @@ import cn.jay.ch4_graph.a0_graph.GraphImpl;
  */
 public class DFS_v1 {
     private int cvn; // connected vertex' num 连通的顶点数
-    private boolean[] markArr; // 是否连通和是否已经访问标记
+    private boolean[] visitedArr; // 是否连通和是否已经访问标记
 
     public DFS_v1(Graph g, int sv) {
-        this.markArr = new boolean[g.getV()];
+        this.visitedArr = new boolean[g.getV()];
         dfs(g, sv);
     }
 
@@ -19,14 +19,14 @@ public class DFS_v1 {
      * 判断指定顶点与 sv 是否连通
      */
     public boolean marked(int v) {
-        return this.markArr[v];
+        return this.visitedArr[v];
     }
 
     private void dfs(Graph g, int v) {
-        this.markArr[v] = true;
+        this.visitedArr[v] = true;
         this.cvn++;
         for (Integer vertex : g.adj(v))
-            if (!markArr[vertex])
+            if (!visitedArr[vertex])
                 dfs(g, vertex);
     }
 
@@ -41,7 +41,7 @@ public class DFS_v1 {
             System.out.println(graph);
             DFS_v1 dfsV1 = new DFS_v1(graph, sourceVertex);
             System.out.println("顶点 " + sourceVertex + " 连通的点：");
-            for (int i = 0; i < dfsV1.markArr.length; i++) {
+            for (int i = 0; i < dfsV1.visitedArr.length; i++) {
                 if (dfsV1.marked(i))
                     System.out.print(i + " ");
             }

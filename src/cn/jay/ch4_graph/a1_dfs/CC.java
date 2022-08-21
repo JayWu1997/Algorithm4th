@@ -9,15 +9,15 @@ import cn.jay.ch4_graph.a0_graph.GraphImpl;
  * 使用深度优先搜索求解图中的连通分量
  */
 public class CC {
-    boolean[] markArr;
+    boolean[] visitedArr;
     int[] groupIdArr;  // 每个顶点所在的连通分量id
     int groupNum;   // 有几组连通分量
 
     public CC(Graph g){
-        markArr = new boolean[g.getV()];
+        visitedArr = new boolean[g.getV()];
         groupIdArr = new int[g.getV()];
         for (int i = 0; i < g.getV(); i++) {
-            if(!markArr[i]){
+            if(!visitedArr[i]){
                 dfs(g, i);
                 groupNum++;
             }
@@ -25,10 +25,10 @@ public class CC {
     }
 
     private void dfs(Graph g, int v){
-        markArr[v] = true;
+        visitedArr[v] = true;
         groupIdArr[v] = groupNum;
         for (Integer vertex : g.adj(v)) {
-            if(!markArr[vertex]){
+            if(!visitedArr[vertex]){
                 dfs(g, vertex);
             }
         }

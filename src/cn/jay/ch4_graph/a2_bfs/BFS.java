@@ -37,7 +37,7 @@ public class BFS {
                 lv[i] = v;
             }
         }
-        if (queue.size() != 0)
+        if (!queue.isEmpty())
             bfs(g, queue.dequeue());
     }
 

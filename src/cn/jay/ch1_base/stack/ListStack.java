@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * 使用链表实现的栈
  */
-public class ListStackImpl<T> implements Stack<T> {
+public class ListStack<T> implements Stack<T> {
     private int itemNum;
     private Node top;
 
@@ -71,7 +71,7 @@ public class ListStackImpl<T> implements Stack<T> {
     }
 
     public static void main(String[] args) {
-        Stack<String> stack = new ListStackImpl<>();
+        Stack<String> stack = new ListStack<>();
         for (int i = 0; i < 20; i++) {
             stack.push("Item:" + (i + 1));
             System.out.println("添加Item：" + (i + 1) + "\t\t当前栈个数：" + stack.size());

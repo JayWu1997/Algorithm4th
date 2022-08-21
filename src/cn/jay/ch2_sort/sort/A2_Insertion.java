@@ -24,6 +24,6 @@ public class A2_Insertion implements Sort {
 
     public static void main(String[] args) throws Exception{
         A2_Insertion insertion = new A2_Insertion();
-        insertion.executeSort();
+        insertion.executeSort(3, 100000, 1000);
     }
 }

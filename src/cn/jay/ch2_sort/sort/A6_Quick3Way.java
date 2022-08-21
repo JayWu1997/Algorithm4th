@@ -69,6 +69,6 @@ public class A6_Quick3Way implements Sort {
     }
 
     public static void main(String[] args) throws Exception{
-        new A6_Quick3Way().executeSort();
+        new A6_Quick3Way().executeSort(3, 100000, 1000);
     }
 }

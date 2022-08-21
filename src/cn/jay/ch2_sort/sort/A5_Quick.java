@@ -71,6 +71,6 @@ public class A5_Quick implements Sort {
 
     public static void main(String[] args) throws Exception{
         A5_Quick quick = new A5_Quick();
-        quick.executeSort();
+        quick.executeSort(3, 100000, 1000);
     }
 }

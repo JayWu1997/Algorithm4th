@@ -22,6 +22,6 @@ public class A3_Shell implements Sort {
 
     public static void main(String[] args) throws Exception{
         A3_Shell shell = new A3_Shell();
-        shell.executeSort();
+        shell.executeSort(3, 100000, 1000);
     }
 }

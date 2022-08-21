@@ -59,8 +59,8 @@ public class A4_Merge implements Sort {
     }
 
     @Override
-    public void executeSort() throws Exception {
-        Comparable[] a = getIntegerParamsFromFile();
+    public void executeSort(int numType, int arrayLength, int modArg) throws Exception {
+        Comparable[] a = getIntegerParamsFromFile(numType, arrayLength, modArg);
         aTemp = new Comparable[a.length];
 
         long beginTime = System.currentTimeMillis();
@@ -73,7 +73,7 @@ public class A4_Merge implements Sort {
         System.out.println("耗时：" + (endTime-beginTime)+"ms");
         System.out.println();
 
-        a = getIntegerParamsFromFile();
+        a = getIntegerParamsFromFile(numType, arrayLength, modArg);
         aTemp = new Comparable[a.length];
         beginTime = System.currentTimeMillis();
         sortFromBottomToTop(a);
@@ -87,6 +87,6 @@ public class A4_Merge implements Sort {
 
     public static void main(String[] args) throws Exception{
         A4_Merge merge = new A4_Merge();
-        merge.executeSort();
+        merge.executeSort(3, 100000, 1000);
     }
 }

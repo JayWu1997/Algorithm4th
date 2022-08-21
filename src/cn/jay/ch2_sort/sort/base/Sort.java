@@ -25,13 +25,18 @@ public interface Sort {
         return !less(v, w);
     }
 
-
+    /**
+     * 交换数组中两个下标对应的值
+     */
     default void exchange(Comparable[] a, int i, int j){
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
 
+    /**
+     * 输出排序前的数组
+     */
     default void show(Comparable[] a){
         for(Comparable c : a)
             System.out.print(c + " ");
@@ -50,9 +55,9 @@ public interface Sort {
      * @Method      getParams()
      * @Description 从 numbers.txt 文件获取Integer数组
      */
-    default Comparable[] getIntegerParamsFromFile() throws Exception{
+    default Comparable[] getIntegerParamsFromFile(int numType, int arrayLength, int modArg) throws Exception{
 
-        NumberInitTool.initRandomNums();
+        NumberInitTool.initNums(numType, arrayLength, modArg);
 
         // 获得工程目录
         StringBuilder builder = new StringBuilder();
@@ -77,8 +82,11 @@ public interface Sort {
         return null;
     }
 
-    default void executeSort() throws Exception{
-        Comparable[] a = getIntegerParamsFromFile();
+    /**
+     * 根据输入的参数生成不同类型、不同长度、不同大小范围的数组，执行排序，并输出执行时间
+     */
+    default void executeSort(int numType, int arrayLength, int modArg) throws Exception{
+        Comparable[] a = getIntegerParamsFromFile(numType, arrayLength, modArg);
         long beginTime = System.currentTimeMillis();
         sort(a);
         long endTime = System.currentTimeMillis();

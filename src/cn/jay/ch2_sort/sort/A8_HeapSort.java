@@ -34,6 +34,6 @@ public class A8_HeapSort implements Sort {
 
     public static void main(String[] args) throws Exception{
         A8_HeapSort heapSort = new A8_HeapSort();
-        heapSort.executeSort();
+        heapSort.executeSort(3, 100000, 1000);
     }
 }

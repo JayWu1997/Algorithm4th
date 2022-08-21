@@ -16,6 +16,6 @@ public class A1_Selection implements Sort {
 
     public static void main(String[] args) throws Exception{
         A1_Selection selection = new A1_Selection();
-        selection.executeSort();
+        selection.executeSort(3, 100, 1000);
     }
 }

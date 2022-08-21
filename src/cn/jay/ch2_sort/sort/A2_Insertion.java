@@ -8,7 +8,7 @@ public class A2_Insertion implements Sort {
         for(int i = lo + 1; i < hi + 1; i++){
             // 注意这里的循环条件，并不一定会从j一直比到0
             for(int j = i; j > 0 && less(a[j],a[j-1]); j--){
-                exch(a ,j ,j-1);
+                exchange(a ,j ,j-1);
             }
         }
     }
@@ -17,7 +17,7 @@ public class A2_Insertion implements Sort {
         for(int i = 1; i < a.length; i++){
             // 注意这里的循环条件，并不一定会从j一直比到0
             for(int j = i; j > 0 && less(a[j],a[j-1]); j--){
-                exch(a ,j ,j-1);
+                exchange(a ,j ,j-1);
             }
         }
     }

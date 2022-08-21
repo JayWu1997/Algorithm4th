@@ -40,12 +40,12 @@ public class A6_Quick3Way implements Sort {
 
         while(i <= gt){
             if(less(a[i], a[lt])){
-                exch(a, lt, i);
+                exchange(a, lt, i);
                 i++;
                 lt++;
             }
             else if(less(a[lt], a[i])){
-                exch(a, gt, i);
+                exchange(a, gt, i);
                 gt--;
             }
             else {
@@ -65,7 +65,7 @@ public class A6_Quick3Way implements Sort {
      */
     public void middleOfFirst3Nums(Comparable[] a, final int lo){
         new A2_Insertion().sort(a, lo, lo+2);
-        exch(a, lo, lo+1);
+        exchange(a, lo, lo+1);
     }
 
     public static void main(String[] args) throws Exception{

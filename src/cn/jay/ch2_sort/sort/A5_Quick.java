@@ -52,9 +52,9 @@ public class A5_Quick implements Sort {
             while(less(a[lo], a[--j])) if(j == lo) break;
 
             if(i >= j) break;
-            exch(a, i, j);
+            exchange(a, i, j);
         }
-        exch(a, lo, j);
+        exchange(a, lo, j);
         return j;
     }
 
@@ -66,7 +66,7 @@ public class A5_Quick implements Sort {
      */
     public void middleOfFirst3Nums(Comparable[] a, final int lo){
         new A2_Insertion().sort(a, lo, lo+2);
-        exch(a, lo, lo+1);
+        exchange(a, lo, lo+1);
     }
 
     public static void main(String[] args) throws Exception{

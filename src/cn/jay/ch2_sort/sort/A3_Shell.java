@@ -13,7 +13,7 @@ public class A3_Shell implements Sort {
             for (int i = h; i < N; i++) {
                 // 从第h位开始插入
                 for(int j = i; j>=h && less(a[j], a[j-h]); j-=h){
-                    exch(a, j, j-h);
+                    exchange(a, j, j-h);
                 }
             }
             h /= 3;

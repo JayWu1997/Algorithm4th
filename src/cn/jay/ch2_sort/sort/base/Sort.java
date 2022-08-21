@@ -26,7 +26,7 @@ public interface Sort {
     }
 
 
-    default void exch(Comparable[] a, int i, int j){
+    default void exchange(Comparable[] a, int i, int j){
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;

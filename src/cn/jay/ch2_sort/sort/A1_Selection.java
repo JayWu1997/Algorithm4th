@@ -10,7 +10,7 @@ public class A1_Selection implements Sort {
             for(int j = i+1; j < a.length; j++){
                 if(less(a[j],a[min])) min = j;
             }
-            exch(a, i, min);
+            exchange(a, i, min);
         }
     }
 

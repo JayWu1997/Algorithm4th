@@ -36,6 +36,14 @@ public class QueueImpl<T> implements Queue<T> {
         return nodeNum;
     }
 
+    /**
+     * 判断队列是否为空，空返回true，非空返回false
+     */
+    @Override
+    public boolean isEmpty() {
+        return nodeNum==0;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {

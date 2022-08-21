@@ -75,7 +75,7 @@ public interface Sort {
     }
 
     /**
-     * 根据输入的参数生成不同类型、不同长度、不同大小范围的数组，执行排序，并输出执行时间
+     * 根据输入的参数生成不同类型(见cn/jay/ch2_sort/tools/NumberInitTool.java)、不同长度、不同大小范围的数组，执行排序，并输出执行时间
      */
     default void executeSort(int numType, int arrayLength, int modArg) throws Exception{
         Comparable[] a = getIntegerParamsFromFile(numType, arrayLength, modArg);

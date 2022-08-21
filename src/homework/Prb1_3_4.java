@@ -1,7 +1,7 @@
 package homework;
 
 import cn.jay.ch1_base.stack.Stack;
-import cn.jay.ch1_base.stack.stackImplByList.ListStackImpl;
+import cn.jay.ch1_base.stack.ListStackImpl;
 
 public class Prb1_3_4 {
     public static void main(String[] args) {

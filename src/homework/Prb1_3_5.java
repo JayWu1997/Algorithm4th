@@ -1,7 +1,7 @@
 package homework;
 
 import cn.jay.ch1_base.stack.Stack;
-import cn.jay.ch1_base.stack.stackImplByList.ListStackImpl;
+import cn.jay.ch1_base.stack.ListStackImpl;
 
 // 该段代码的行为是：正十进制数转化为二进制数
 public class Prb1_3_5 {

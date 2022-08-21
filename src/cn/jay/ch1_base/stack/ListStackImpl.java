@@ -1,6 +1,4 @@
-package cn.jay.ch1_base.stack.stackImplByList;
-
-import cn.jay.ch1_base.stack.Stack;
+package cn.jay.ch1_base.stack;
 
 import java.util.Iterator;
 

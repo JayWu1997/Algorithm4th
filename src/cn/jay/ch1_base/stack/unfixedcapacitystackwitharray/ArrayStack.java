@@ -1,11 +1,11 @@
 package cn.jay.ch1_base.stack.unfixedcapacitystackwitharray;
 
-public interface UnfixedCapacityStackWithArray<T> extends Iterable<T>{
+public interface ArrayStack<T> extends Iterable<T>{
 
     void push(T item);
     T pop();
-    int getSize();
-    void resize(int newSize);
+    T peek();
+    int size();
     boolean isEmpty();
     int getCapacity();
 

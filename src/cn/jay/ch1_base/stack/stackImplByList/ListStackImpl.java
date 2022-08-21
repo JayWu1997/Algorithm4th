@@ -2,7 +2,7 @@ package cn.jay.ch1_base.stack.stackImplByList;
 
 import java.util.Iterator;
 
-public class StackByListImpl<T> implements StackByList<T>{
+public class ListStackImpl<T> implements ListStack<T> {
     private int itemNum;
     private Node top;
 
@@ -23,7 +23,13 @@ public class StackByListImpl<T> implements StackByList<T>{
         return result;
     }
 
-    public T peek(){
+    /**
+     * 获取栈顶元素但不弹栈
+     */
+    @Override
+    public T peek() {
+        if(isEmpty())
+            return null;
         return top.item;
     }
 
@@ -34,16 +40,17 @@ public class StackByListImpl<T> implements StackByList<T>{
 
     @Override
     public boolean isEmpty() {
-        return top ==null;
+        return top == null;
     }
 
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             Node topTemp = top;
+
             @Override
             public boolean hasNext() {
-                return topTemp !=null;
+                return topTemp != null;
             }
 
             @Override
@@ -61,12 +68,12 @@ public class StackByListImpl<T> implements StackByList<T>{
     }
 
     public static void main(String[] args) {
-        StackByList<String> stack = new StackByListImpl<>();
-        for(int i = 0; i < 20; i ++){
-            stack.push("Item:" + (i+1));
-            System.out.println("添加Item：" + (i+1) + "\t\t当前栈个数：" + stack.size());
+        ListStack<String> stack = new ListStackImpl<>();
+        for (int i = 0; i < 20; i++) {
+            stack.push("Item:" + (i + 1));
+            System.out.println("添加Item：" + (i + 1) + "\t\t当前栈个数：" + stack.size());
         }
-        for(String s: stack){
+        for (String s : stack) {
             System.out.println("出栈：" + stack.pop() + "\t\t当前栈个数：" + stack.size());
         }
     }

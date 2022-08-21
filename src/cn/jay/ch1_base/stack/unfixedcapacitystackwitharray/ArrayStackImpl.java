@@ -6,13 +6,13 @@ import java.util.Iterator;
     不定容栈，元素始终在栈大小的四分之一到二分之一
     使用数组实现
  */
-public class UnfixedCapacityStackWithArrayImpl<T> implements UnfixedCapacityStackWithArray<T> {
+public class ArrayStackImpl<T> implements ArrayStack<T> {
 
     private int cap;  //容量
     private T[] array; //元素数组
     private int index = 0; //当前栈顶索引
 
-    UnfixedCapacityStackWithArrayImpl(int cap){
+    ArrayStackImpl(int cap){
         if(cap < 4) cap=4;
         this.cap = cap;
         array = (T[]) new Object[cap];
@@ -28,25 +28,30 @@ public class UnfixedCapacityStackWithArrayImpl<T> implements UnfixedCapacityStac
 
     @Override
     public T pop() {
-        //检查是否需要缩小数组
+        // 判断栈是否为空
+        if(isEmpty())
+            return null;
+
         T item = array[--index];
-        array[index] = null; //避免对象游离
+        //避免对象游离
+        array[index] = null;
+
+        //检查是否需要缩小数组
         if(index>0 && index < cap/4)
             resize(cap/2);
         return item;
     }
 
     @Override
-    public int getSize() {
-        return index;
+    public T peek() {
+        if(isEmpty())
+            return null;
+        return array[index-1];
     }
 
     @Override
-    public void resize(int newSize) {
-        T[] newArray = (T[]) new Object[newSize];
-        if (index + 1 >= 0) System.arraycopy(array, 0, newArray, 0, index + 1);
-        array = newArray;
-        cap = newSize;
+    public int size() {
+        return index;
     }
 
     @Override
@@ -75,8 +80,20 @@ public class UnfixedCapacityStackWithArrayImpl<T> implements UnfixedCapacityStac
         };
     }
 
+    /**
+     * 扩大数组array
+     */
+    private void resize(int newSize) {
+        T[] newArray = (T[]) new Object[newSize];
+        if (index + 1 >= 0) System.arraycopy(array, 0, newArray, 0, index + 1);
+        array = newArray;
+        cap = newSize;
+    }
+
+
+
     public static void main(String[] args) {
-        UnfixedCapacityStackWithArray<String> stack = new UnfixedCapacityStackWithArrayImpl<>(1);
+        ArrayStack<String> stack = new ArrayStackImpl<>(1);
         for (int i=0; i<100; i++){
             stack.push(i+"");
             System.out.println(i+"-"+stack.getCapacity());

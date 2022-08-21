@@ -59,17 +59,9 @@ public interface Sort {
 
         NumberInitTool.initNums(numType, arrayLength, modArg);
 
-        // 获得工程目录
-        StringBuilder builder = new StringBuilder();
-        // 填充文件地址
-        builder.append("src")
-                .append(File.separator).append("cn")
-                .append(File.separator).append("jay")
-                .append(File.separator).append("ch2_sort")
-                .append(File.separator).append("sort")
-                .append(File.separator).append("numbers.txt");
+        String filePath = NumberInitTool.getNumsFilePath();
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(builder.toString())));
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
         String line;
         if((line = in.readLine()) != null) {
             String[] numbers = line.split(" ");

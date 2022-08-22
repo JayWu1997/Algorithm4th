@@ -24,9 +24,7 @@ public class GraphImpl implements Graph {
     }
 
     /**
-     * 作业 P4.1.3 的实现
-     *
-     * @param g
+     * 作业 P4.1.3 的实现，深复制指定Graph对象
      */
     public GraphImpl(Graph g) {
         this.e = g.getE();
@@ -75,6 +73,16 @@ public class GraphImpl implements Graph {
      */
     @Override
     public void addEdge(int v1, int v2) {
+        if(v1 >= v || v2 >= v)
+            return;
+
+        // 不添加重复边，不允许自环，P4.1.5
+        if(v1 == v2) return;
+        for (Integer child : adj[v1]) {
+            if(child == v2)
+                return;
+        }
+
         adj[v1].add(v2);
         adj[v2].add(v1);
     }

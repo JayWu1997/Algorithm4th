@@ -1,11 +1,13 @@
 package cn.jay.ch4_graph.a0_graph;
 
+import cn.jay.ch1_base.bag.Bag;
 import cn.jay.ch1_base.bag.ListBag;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -16,7 +18,27 @@ public class GraphImpl implements Graph {
 
     private int e;  // 边数
 
-    private ListBag<Integer>[] adj; // 领接表
+    private Bag<Integer>[] adj; // 领接表
+
+    public GraphImpl() {
+    }
+
+    /**
+     * 作业 P4.1.3 的实现
+     * @param g
+     */
+    public GraphImpl(Graph g){
+        this.e = g.getE();
+        this.v = g.getV();
+        this.adj = (ListBag<Integer>[]) new ListBag[g.getV()];
+        for (int i = 0; i < g.getV(); i++) {
+            Bag<Integer> bag = new ListBag<>();
+            for (Integer integer : g.adj(i)) {
+                bag.add(integer);
+            }
+            this.adj[i] = bag;
+        }
+    }
 
     /**
      * 通过键盘初始化图
@@ -135,7 +157,7 @@ public class GraphImpl implements Graph {
      */
     public double avgDegree() {
         int sum = 0;
-        for (ListBag<Integer> bag : adj) {
+        for (Bag<Integer> bag : adj) {
             sum += bag.size();
         }
         return ((double) sum) / this.v;

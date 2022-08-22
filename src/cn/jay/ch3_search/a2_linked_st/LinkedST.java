@@ -1,4 +1,4 @@
-package cn.jay.ch3_search.a2_binary_search_st;
+package cn.jay.ch3_search.a2_linked_st;
 
 import cn.jay.ch3_search.a0_base.OrderedSymbolTable;
 
@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * @ClassName: BinarySearchST
  * @Description: 有序符号表和数组实现的二分查找表，优点是查找快，缺点是插入慢
  * @Author: jay
  * @Date: 2021/5/29 19:59
  */
-public class BinarySearchST<K extends Comparable<K>, V> implements OrderedSymbolTable<K, V> {
+public class LinkedST<K extends Comparable<K>, V> implements OrderedSymbolTable<K, V> {
     private int size;
 
     private K[] keys;
@@ -20,14 +19,14 @@ public class BinarySearchST<K extends Comparable<K>, V> implements OrderedSymbol
 
     private int capacity = 8;
 
-    BinarySearchST(){}
+    LinkedST(){}
 
     /**
      * @Method BinarySearchOrderedSymbolTable
      * @Description 初始化二叉搜索符号表
      * @param capacity 初始容量
      */
-    BinarySearchST(int capacity){
+    LinkedST(int capacity){
         if (capacity > 8) {
             this.capacity = capacity;
         }
@@ -380,7 +379,7 @@ public class BinarySearchST<K extends Comparable<K>, V> implements OrderedSymbol
     }
 
     public static void main(String[] args) {
-        BinarySearchST<Integer, Integer> symbolTable = new BinarySearchST<>();
+        LinkedST<Integer, Integer> symbolTable = new LinkedST<>();
 
         // 测试put()
         System.out.println("测试put()");

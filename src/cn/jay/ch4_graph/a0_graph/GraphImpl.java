@@ -40,6 +40,44 @@ public class GraphImpl implements Graph {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("V: ").append(this.v).append("\n");
+        builder.append("E: ").append(this.e).append("\n");
+        for (int i = 0; i < adj.length; i++) {
+            for (Integer integer : adj[i]) {
+                builder.append(i).append(" - ").append(integer).append("\n");
+            }
+        }
+        return builder.toString();
+    }
+
+    /**
+     * 获取顶点数
+     */
+    @Override
+    public int getV() {
+        return this.v;
+    }
+
+    /**
+     * 获取边数
+     */
+    @Override
+    public int getE() {
+        return this.e;
+    }
+
+    /**
+     * 添加边
+     */
+    @Override
+    public void addEdge(int v1, int v2) {
+        adj[v1].add(v2);
+        adj[v2].add(v1);
+    }
+
     /**
      * 通过键盘初始化图
      */
@@ -83,49 +121,11 @@ public class GraphImpl implements Graph {
         }
     }
 
-
     /**
      * 返回点v的连通节点
      */
     public Iterable<Integer> adj(int v) {
         return adj[v];
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("V: ").append(this.v).append("\n");
-        builder.append("E: ").append(this.e).append("\n");
-        for (int i = 0; i < adj.length; i++) {
-            for (Integer integer : adj[i]) {
-                builder.append(i).append(" - ").append(integer).append("\n");
-            }
-        }
-        return builder.toString();
-    }
-
-    /**
-     * 获取顶点数
-     */
-    @Override
-    public int getV() {
-        return this.v;
-    }
-
-    /**
-     * 获取边数
-     */
-    @Override
-    public int getE() {
-        return this.e;
-    }
-
-    /**
-     * 添加边
-     */
-    public void addEdge(int v1, int v2) {
-        adj[v1].add(v2);
-        adj[v2].add(v1);
     }
 
     /**
@@ -177,20 +177,10 @@ public class GraphImpl implements Graph {
         return num / 2;
     }
 
-
     /**
-     * 测试
+     * 通过同目录的graph文件生成graph
+     * @return
      */
-    public static void main(String[] args) {
-        // TODO
-         test_initFromFile();
-        // test_initByKeyboard();
-    }
-
-    private static void test_initFromFile() {
-        System.out.println(initGraphFromFile());
-    }
-
     public static Graph initGraphFromFile() {
         // 获得工程目录
         StringBuilder builder = new StringBuilder(new File("").getAbsolutePath());
@@ -210,6 +200,23 @@ public class GraphImpl implements Graph {
             return null;
         }
         return graph;
+    }
+
+
+
+
+
+    /**
+     * 测试
+     */
+    public static void main(String[] args) {
+        // TODO
+         test_initFromFile();
+        // test_initByKeyboard();
+    }
+
+    private static void test_initFromFile() {
+        System.out.println(initGraphFromFile());
     }
 
     private static void test_initByKeyboard() {

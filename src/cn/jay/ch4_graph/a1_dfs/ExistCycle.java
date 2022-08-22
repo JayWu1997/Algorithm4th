@@ -9,10 +9,10 @@ import cn.jay.ch4_graph.a0_graph.GraphImpl;
  * 检测图中是否有环，默认该图为连通图
  * 若已被标记访问的节点中存在非父节点，则表示可以成环，因为已被标记的节点都是连通的，而子节点可以和非负节点连通，子-父-其他-子，就形成一个环
  */
-public class ExistRing {
+public class ExistCycle {
     private boolean visitedArr[];
 
-    public ExistRing(Graph g){
+    public ExistCycle(Graph g){
         this.visitedArr = new boolean[g.getV()];
     }
 
@@ -38,8 +38,8 @@ public class ExistRing {
 
     public static void main(String[] args) {
         Graph g = GraphImpl.initGraphFromFile();
-        ExistRing existRing = new ExistRing(g);
-        System.out.println(existRing.hasRing(g));
+        ExistCycle existCycle = new ExistCycle(g);
+        System.out.println(existCycle.hasRing(g));
     }
 
 }

@@ -25,9 +25,10 @@ public class GraphImpl implements Graph {
 
     /**
      * 作业 P4.1.3 的实现
+     *
      * @param g
      */
-    public GraphImpl(Graph g){
+    public GraphImpl(Graph g) {
         this.e = g.getE();
         this.v = g.getV();
         this.adj = (ListBag<Integer>[]) new ListBag[g.getV()];
@@ -79,10 +80,24 @@ public class GraphImpl implements Graph {
     }
 
     /**
+     * 判断是否存在指定边，作业P4.1.4
+     */
+    public boolean hasEdge(int v1, int v2) {
+        if (v1 >= this.v || v2 >= this.v)
+            return false;
+
+        for (Integer child : adj[v1]) {
+            if (child == v2)
+                return true;
+        }
+
+        return false;
+    }
+
+    /**
      * 通过键盘初始化图
      */
-    public void initByKeyboard()
-    {
+    public void initByKeyboard() {
         Scanner in = new Scanner(System.in);
         System.out.println("请输入顶点数");
         this.v = in.nextInt();
@@ -179,6 +194,7 @@ public class GraphImpl implements Graph {
 
     /**
      * 通过同目录的graph文件生成graph
+     *
      * @return
      */
     public static Graph initGraphFromFile() {
@@ -203,15 +219,12 @@ public class GraphImpl implements Graph {
     }
 
 
-
-
-
     /**
      * 测试
      */
     public static void main(String[] args) {
         // TODO
-         test_initFromFile();
+        test_initFromFile();
         // test_initByKeyboard();
     }
 

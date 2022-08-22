@@ -73,13 +73,13 @@ public class GraphImpl implements Graph {
      */
     @Override
     public void addEdge(int v1, int v2) {
-        if(v1 >= v || v2 >= v)
+        if (v1 >= v || v2 >= v)
             return;
 
         // 不添加重复边，不允许自环，P4.1.5
-        if(v1 == v2) return;
+        if (v1 == v2) return;
         for (Integer child : adj[v1]) {
-            if(child == v2)
+            if (child == v2)
                 return;
         }
 
@@ -100,48 +100,6 @@ public class GraphImpl implements Graph {
         }
 
         return false;
-    }
-
-    /**
-     * 通过键盘初始化图
-     */
-    public void initByKeyboard() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("请输入顶点数");
-        this.v = in.nextInt();
-        System.out.println("请输入边数");
-        this.e = in.nextInt();
-        adj = (ListBag<Integer>[]) new ListBag[v];
-        for (int i = 0; i < v; i++)
-            adj[i] = new ListBag<Integer>();
-        for (int i = 0; i < e; i++) {
-            System.out.println("请输入第" + (i + 1) + "条边的两个顶点");
-            int v1 = in.nextInt();
-            int v2 = in.nextInt();
-            addEdge(v1, v2);
-        }
-    }
-
-    /**
-     * 通过文件初始化，需要绝对路径
-     *
-     * @param path
-     * @throws FileNotFoundException
-     */
-    public void initByFile(String path) throws FileNotFoundException {
-        File file = new File(path);
-        InputStream fileInputStream = new FileInputStream(file);
-        Scanner in = new Scanner(fileInputStream);
-        this.v = in.nextInt();
-        this.e = in.nextInt();
-        adj = (ListBag<Integer>[]) new ListBag[v];
-        for (int i = 0; i < v; i++)
-            adj[i] = new ListBag<Integer>();
-        for (int i = 0; i < e; i++) {
-            int v1 = in.nextInt();
-            int v2 = in.nextInt();
-            addEdge(v1, v2);
-        }
     }
 
     /**
@@ -201,11 +159,29 @@ public class GraphImpl implements Graph {
     }
 
     /**
-     * 通过同目录的graph文件生成graph
-     *
-     * @return
+     * 通过键盘初始化图
      */
-    public static Graph initGraphFromFile() {
+    private void initByKeyboard() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("请输入顶点数");
+        this.v = in.nextInt();
+        System.out.println("请输入边数");
+        this.e = in.nextInt();
+        adj = (ListBag<Integer>[]) new ListBag[v];
+        for (int i = 0; i < v; i++)
+            adj[i] = new ListBag<Integer>();
+        for (int i = 0; i < e; i++) {
+            System.out.println("请输入第" + (i + 1) + "条边的两个顶点");
+            int v1 = in.nextInt();
+            int v2 = in.nextInt();
+            addEdge(v1, v2);
+        }
+    }
+
+    /**
+     * 通过文件初始化，需要绝对路径
+     */
+    private void initByFile() throws FileNotFoundException {
         // 获得工程目录
         StringBuilder builder = new StringBuilder(new File("").getAbsolutePath());
         // 填充文件地址
@@ -215,9 +191,30 @@ public class GraphImpl implements Graph {
                 .append(File.separator).append("ch4_graph")
                 .append(File.separator).append("a0_graph")
                 .append(File.separator).append("graph.txt");
+        InputStream fileInputStream = new FileInputStream(builder.toString());
+        Scanner in = new Scanner(fileInputStream);
+        this.v = in.nextInt();
+        this.e = in.nextInt();
+        adj = (ListBag<Integer>[]) new ListBag[v];
+        for (int i = 0; i < v; i++)
+            adj[i] = new ListBag<Integer>();
+        for (int i = 0; i < e; i++) {
+            int v1 = in.nextInt();
+            int v2 = in.nextInt();
+            addEdge(v1, v2);
+        }
+    }
+
+    /**
+     * 通过同目录的graph文件生成graph
+     *
+     * @return
+     */
+    public static Graph initGraphFromFile() {
+
         GraphImpl graph = new GraphImpl();
         try {
-            graph.initByFile(builder.toString());
+            graph.initByFile();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             System.out.println("文件不存在");
@@ -226,24 +223,13 @@ public class GraphImpl implements Graph {
         return graph;
     }
 
-
     /**
-     * 测试
+     * 通过键盘录入生成Graph
      */
-    public static void main(String[] args) {
-        // TODO
-        test_initFromFile();
-        // test_initByKeyboard();
-    }
-
-    private static void test_initFromFile() {
-        System.out.println(initGraphFromFile());
-    }
-
-    private static void test_initByKeyboard() {
+    public static Graph initFromKeyboard() {
         GraphImpl graph = new GraphImpl();
         graph.initByKeyboard();
-        System.out.println(graph);
+        return graph;
     }
 
 }

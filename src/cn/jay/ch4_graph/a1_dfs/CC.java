@@ -6,7 +6,7 @@ import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
 
 /**
- * 使用深度优先搜索求解图中的连通分量
+ * 使用深度优先搜索求解图中的连通子图
  */
 public class CC {
     boolean[] visitedArr;

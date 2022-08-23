@@ -3,13 +3,14 @@ package cn.jay.ch1_base.stack;
 import java.util.Iterator;
 
 /**
- * 不定容栈，元素始终在栈大小的四分之一到二分之一, 使用数组实现
+ * 不定容栈，栈大小始终在元素个数的1-1.5倍, 使用数组实现
  */
 public class ArrayStack<T> implements Stack<T> {
 
     private int cap;  //容量
     private T[] array; //元素数组
     private int index = 0; //当前栈顶索引
+    private double s = 1.5; // 数组的扩大/缩小因子
 
     ArrayStack(int cap) {
         if (cap < 4) cap = 4;
@@ -20,8 +21,8 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public void push(T item) {
 
-        if (index >= cap / 2) // 检查是否栈溢出
-            resize(2 * cap);
+        if (index == cap) // 检查是否栈溢出
+            resize((int)(cap*s));
         array[index++] = item;
     }
 
@@ -37,7 +38,7 @@ public class ArrayStack<T> implements Stack<T> {
 
         //检查是否需要缩小数组
         if (index > 0 && index < cap / 4)
-            resize(cap / 2);
+            resize((int)(cap/1.5));
         return item;
     }
 

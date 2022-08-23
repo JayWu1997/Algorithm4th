@@ -1,6 +1,6 @@
 package cn.jay.ch1_base.list;
 
-public interface List<E> extends Iterable<E>{
+public interface List<E> extends Iterable<E> {
 
     void add(E e);
 

@@ -102,6 +102,25 @@ public class LinkedList<E> implements List<E> {
     }
 
     @Override
+    public int lastIndexOf(E e) {
+        int index = size-1;
+        if (e == null) {
+            for (Node<E> tailTemp = tail; tailTemp != null; tailTemp = tailTemp.pre) {
+                if (tailTemp.element == null)
+                    return index;
+                index--;
+            }
+        } else {
+            for (Node<E> tailTemp = tail; tailTemp != null; tailTemp = tailTemp.pre) {
+                if (tailTemp.element.equals(e))
+                    return index;
+                index--;
+            }
+        }
+        return -1;
+    }
+
+    @Override
     public int size() {
         return size;
     }
@@ -109,6 +128,19 @@ public class LinkedList<E> implements List<E> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    @Override
+    public List<E> subList(int start, int end) {
+        checkElementIndex(start);
+        checkElementIndex(end-1);
+
+        List<E> newList = new LinkedList<>();
+        for (;start < end; start++){
+            newList.add(get(start));
+        }
+
+        return newList;
     }
 
     @Override

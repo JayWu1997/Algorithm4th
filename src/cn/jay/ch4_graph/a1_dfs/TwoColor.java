@@ -1,6 +1,6 @@
 package cn.jay.ch4_graph.a1_dfs;
 
-import cn.jay.ch1_base.stack.ListStack;
+import cn.jay.ch1_base.stack.LinkedStack;
 import cn.jay.ch1_base.stack.Stack;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
@@ -16,7 +16,7 @@ public class TwoColor {
     }
 
     private boolean dfs(Graph g){
-        Stack<Integer[]> stack = new ListStack<>();
+        Stack<Integer[]> stack = new LinkedStack<>();
         Integer[] vertexAndColor;
         color[0] = 1;
         stack.push(new Integer[]{0, 1});

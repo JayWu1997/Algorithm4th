@@ -3,7 +3,7 @@ package cn.jay.ch4_graph.a2_bfs;
 import cn.jay.ch1_base.bag.Bag;
 import cn.jay.ch1_base.bag.ListBag;
 import cn.jay.ch1_base.queue.Queue;
-import cn.jay.ch1_base.queue.ListQueue;
+import cn.jay.ch1_base.queue.LinkedQueue;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
 
@@ -16,7 +16,7 @@ public class BFS {
     private final boolean[] visitedArr;
     private final int sv; // source vertex
     private final int[] lv; // last vertex 从 sv 到数组下标对应顶点的最短路径上的倒数第二个顶点 eg: 0-1-2-3  则lv[3]=2
-    private final Queue<Integer> queue = new ListQueue<>();
+    private final Queue<Integer> queue = new LinkedQueue<>();
 
     public BFS(Graph g, int sv) {
         this.visitedArr = new boolean[g.getV()];

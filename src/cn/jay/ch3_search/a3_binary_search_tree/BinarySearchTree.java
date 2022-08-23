@@ -1,6 +1,6 @@
 package cn.jay.ch3_search.a3_binary_search_tree;
 
-import cn.jay.ch1_base.queue.ListQueue;
+import cn.jay.ch1_base.queue.LinkedQueue;
 import cn.jay.ch3_search.a0_base.OrderedSymbolTable;
 
 /**
@@ -303,7 +303,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
 
     @Override
     public Iterable<K> keys(K lo, K hi) {
-        ListQueue<K> queue = new ListQueue<>();
+        LinkedQueue<K> queue = new LinkedQueue<>();
         keys(root, queue, lo, hi);
         return queue;
     }
@@ -315,7 +315,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements OrderedSymb
     * @Author: Jay
     * @Date: 2021/12/19 16:17
     */
-    private void keys(Node node, ListQueue<K> queue, K lo, K hi){
+    private void keys(Node node, LinkedQueue<K> queue, K lo, K hi){
         if(node == null) return;
 
         int cmpLo = lo.compareTo(node.key);

@@ -1,6 +1,6 @@
 package cn.jay.ch4_graph.a1_dfs;
 
-import cn.jay.ch1_base.stack.ListStack;
+import cn.jay.ch1_base.stack.LinkedStack;
 import cn.jay.ch1_base.stack.Stack;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
@@ -17,7 +17,7 @@ public class ExistCycle {
     }
 
     public boolean hasRing(Graph g){
-        Stack<Integer[]> stack = new ListStack<>();
+        Stack<Integer[]> stack = new LinkedStack<>();
         visitedArr[0] = true;
         for (Integer v : g.adj(0))
             stack.push(new Integer[]{v, 0});

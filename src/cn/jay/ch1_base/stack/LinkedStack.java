@@ -20,6 +20,8 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
+        if (itemNum == 0)
+            return null;
         T result = top.item;
         top = top.next;
         itemNum--;
@@ -31,7 +33,7 @@ public class LinkedStack<T> implements Stack<T> {
      */
     @Override
     public T peek() {
-        if(isEmpty())
+        if (isEmpty())
             return null;
         return top.item;
     }

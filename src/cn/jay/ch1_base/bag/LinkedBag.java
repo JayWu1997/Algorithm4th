@@ -2,7 +2,9 @@ package cn.jay.ch1_base.bag;
 
 import java.util.Iterator;
 
-
+/**
+ * 使用链表实现的Bag
+ */
 public class LinkedBag<T> implements Bag<T> {
     private Node head;
     private int nodeNum;

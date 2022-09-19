@@ -10,7 +10,7 @@ import cn.jay.ch4_graph.a0_graph.GraphImpl;
  * 若已被标记访问的节点中存在非父节点，则表示可以成环，因为已被标记的节点都是连通的，而子节点可以和非负节点连通，子-父-其他-子，就形成一个环
  */
 public class ExistCycle {
-    private boolean visitedArr[];
+    private boolean[] visitedArr;
 
     public ExistCycle(Graph g){
         this.visitedArr = new boolean[g.getV()];

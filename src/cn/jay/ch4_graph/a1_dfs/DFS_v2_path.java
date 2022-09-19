@@ -1,7 +1,7 @@
 package cn.jay.ch4_graph.a1_dfs;
 
 import cn.jay.ch1_base.bag.Bag;
-import cn.jay.ch1_base.bag.ListBag;
+import cn.jay.ch1_base.bag.LinkedBag;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 改进的DFS算法，能够保存路径，但不能保证是最短路径
  */
 public class DFS_v2_path {
-    private boolean visitedArr[];
+    private boolean[] visitedArr;
     private int[] lv; // last vertex 从源点到数组下标对应顶点的路径上的倒数第二个顶点 eg: 0-1-2-3  则lv[3]=2
     private final int sv; // source sv 起点
 
@@ -40,7 +40,7 @@ public class DFS_v2_path {
      * 获取从 v 到 sv 的路径
      */
     public Bag<Integer> getPath(int v){
-        Bag<Integer> bag = new ListBag<>();
+        Bag<Integer> bag = new LinkedBag<>();
         while(v != -1 && v != sv){
             bag.add(v);
             v = lv[v];

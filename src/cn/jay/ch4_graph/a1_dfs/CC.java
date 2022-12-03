@@ -1,7 +1,7 @@
 package cn.jay.ch4_graph.a1_dfs;
 
 import cn.jay.ch1_base.bag.Bag;
-import cn.jay.ch1_base.bag.ListBag;
+import cn.jay.ch1_base.bag.LinkedBag;
 import cn.jay.ch4_graph.a0_graph.Graph;
 import cn.jay.ch4_graph.a0_graph.GraphImpl;
 
@@ -49,7 +49,7 @@ public class CC {
         if(groupNum == 0)
             return null;
 
-        Bag<Bag<Integer>> bags = new ListBag<>();
+        Bag<Bag<Integer>> bags = new LinkedBag<>();
         for (int i = 0; i < groupNum; i++)
             bags.add(getGroupById(i));
 
@@ -62,7 +62,7 @@ public class CC {
     public Bag<Integer> getGroupById(int groupId){
         if(groupId > groupNum)
             return null;
-        Bag<Integer> bag = new ListBag<>();
+        Bag<Integer> bag = new LinkedBag<>();
         for (int i = 0; i < groupIdArr.length; i++) {
             if(groupIdArr[i] == groupId)
                 bag.add(i);

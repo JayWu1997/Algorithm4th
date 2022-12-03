@@ -1,13 +1,12 @@
 package cn.jay.ch4_graph.a0_graph;
 
 import cn.jay.ch1_base.bag.Bag;
-import cn.jay.ch1_base.bag.ListBag;
+import cn.jay.ch1_base.bag.LinkedBag;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -29,9 +28,9 @@ public class GraphImpl implements Graph {
     public GraphImpl(Graph g) {
         this.e = g.getE();
         this.v = g.getV();
-        this.adj = (ListBag<Integer>[]) new ListBag[g.getV()];
+        this.adj = (LinkedBag<Integer>[]) new LinkedBag[g.getV()];
         for (int i = 0; i < g.getV(); i++) {
-            Bag<Integer> bag = new ListBag<>();
+            Bag<Integer> bag = new LinkedBag<>();
             for (Integer integer : g.adj(i)) {
                 bag.add(integer);
             }
@@ -167,9 +166,9 @@ public class GraphImpl implements Graph {
         this.v = in.nextInt();
         System.out.println("请输入边数");
         this.e = in.nextInt();
-        adj = (ListBag<Integer>[]) new ListBag[v];
+        adj = (LinkedBag<Integer>[]) new LinkedBag[v];
         for (int i = 0; i < v; i++)
-            adj[i] = new ListBag<Integer>();
+            adj[i] = new LinkedBag<Integer>();
         for (int i = 0; i < e; i++) {
             System.out.println("请输入第" + (i + 1) + "条边的两个顶点");
             int v1 = in.nextInt();
@@ -195,9 +194,9 @@ public class GraphImpl implements Graph {
         Scanner in = new Scanner(fileInputStream);
         this.v = in.nextInt();
         this.e = in.nextInt();
-        adj = (ListBag<Integer>[]) new ListBag[v];
+        adj = (LinkedBag<Integer>[]) new LinkedBag[v];
         for (int i = 0; i < v; i++)
-            adj[i] = new ListBag<Integer>();
+            adj[i] = new LinkedBag<Integer>();
         for (int i = 0; i < e; i++) {
             int v1 = in.nextInt();
             int v2 = in.nextInt();

@@ -1,3 +1,5 @@
 /.idea/
 *.iml
 /out/
+/src/main/java/cn/jay/ch2_sort/sort/numbers.txt
+/src/main/java/cn/jay/ch2_sort/sort/result.txt

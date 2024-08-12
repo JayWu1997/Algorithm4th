@@ -4,7 +4,6 @@ package cn.jay.ch2_sort.sort.base;
 import cn.jay.ch2_sort.tools.NumberInitTool;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 

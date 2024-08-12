@@ -61,7 +61,7 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<>() {
+        return new Iterator<T>() {
             int nowIndex = 0; //当前下标
 
             @Override

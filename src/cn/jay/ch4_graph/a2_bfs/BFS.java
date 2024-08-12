@@ -1,7 +1,7 @@
 package cn.jay.ch4_graph.a2_bfs;
 
 import cn.jay.ch1_base.bag.Bag;
-import cn.jay.ch1_base.bag.ListBag;
+import cn.jay.ch1_base.bag.LinkedBag;
 import cn.jay.ch1_base.queue.Queue;
 import cn.jay.ch1_base.queue.LinkedQueue;
 import cn.jay.ch4_graph.a0_graph.Graph;
@@ -45,7 +45,7 @@ public class BFS {
      * 获取从 sv 到 v 的路径
      */
     private Iterable<Integer> getPath(int v) {
-        Bag<Integer> bag = new ListBag<>();
+        Bag<Integer> bag = new LinkedBag<>();
         while (v != this.sv && v != -1) {
             bag.add(v);
             v = lv[v];

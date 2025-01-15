@@ -37,6 +37,12 @@ public class KMP {
         return next;
     }
 
+    /**
+     * 返回所有匹配的起始位置
+     * @param pattern
+     * @param str
+     * @return
+     */
     private List<Integer> search(String pattern, String str){
         List<Integer> list = new ArrayList<Integer>();
         int[] next = calNext(pattern);
@@ -58,7 +64,7 @@ public class KMP {
 
     public static void main(String[] args) {
         KMP kmp = new KMP();
-        System.out.println(kmp.search("ababc", "haabcababcabcdfjkal"));
+        System.out.println(kmp.search("ababc", "haabcababcabcdababcfjkal"));
 
     }
 

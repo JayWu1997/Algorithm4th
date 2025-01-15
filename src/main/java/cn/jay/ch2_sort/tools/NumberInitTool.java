@@ -56,12 +56,12 @@ public class NumberInitTool {
         REMAINDER = modArg;
 
         switch (numType) {
-            case 0 -> initRandomNums();
-            case 1 -> initIncreasingNums();
-            case 2 -> initDescendingNums();
-            case 3 -> initHalf0Half1Nums();
-            case 4 -> initHalf0Quarter1Quarter2Nums();
-            case 5 -> initHalf0HalfRandomNums();
+            case 0 : initRandomNums();
+            case 1 : initIncreasingNums();
+            case 2 : initDescendingNums();
+            case 3 : initHalf0Half1Nums();
+            case 4 : initHalf0Quarter1Quarter2Nums();
+            case 5 : initHalf0HalfRandomNums();
         }
     }
 
